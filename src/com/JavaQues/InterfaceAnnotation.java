@@ -12,10 +12,10 @@ public class InterfaceAnnotation {
 	
 	public static void main(String[] args) {
 		
-		
 		String primaryCountryCode="CN";
 		String beneficiaryCountryCode="CN";
-		if (primaryCountryCode == "CN" && beneficiaryCountryCode == "CN" || primaryCountryCode == "KR" && beneficiaryCountryCode == "KR" )
+		if (primaryCountryCode == "CN" && beneficiaryCountryCode == "CN" 
+				|| primaryCountryCode == "KR" && beneficiaryCountryCode == "KR" )
 		{
 			System.out.println("df");
 		}

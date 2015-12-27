@@ -1,11 +1,11 @@
-package com.recursion;
+/*package com.recursion;
 
 import java.awt.*;
 import acm.program.*;
 import acm.graphics.*;
 
 public class Sierpinski extends GraphicsProgram {
-	@Override
+
 	public void run() {
 		// draw black background square
 		final GRect box = new GRect(20, 20, 242, 242);
@@ -38,3 +38,4 @@ public class Sierpinski extends GraphicsProgram {
 	}
 }
 
+ */
