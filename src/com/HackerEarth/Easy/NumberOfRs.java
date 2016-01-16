@@ -48,7 +48,6 @@ public class NumberOfRs {
 		return max(getNumberOfRs(arr,i,m),
 				getNumberOfRs(arr,m+1,n),
 				combineResult(arr,i,m,n));
-
 	}
 
 	private static int max(int a,int b,int c) {
@@ -86,7 +85,6 @@ public class NumberOfRs {
 
 			}
 		}
-
 		return 0;
 	}
 

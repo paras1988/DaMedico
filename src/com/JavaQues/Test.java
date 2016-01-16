@@ -3,16 +3,24 @@ package com.JavaQues;
 
 class Test
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
-		Test obj = new Test()
-		{
-			@Override
-			public int hashCode()
-			{
-				return 40;
-			}
-		};
-		System.out.println(obj.hashCode());
+		int a=0;
+		int b=1;
+		try{
+			fun();
+		}
+		catch(Exception e){
+			System.out.println("asdfa");
+		}
+
+
+		System.out.println(a);
+	}
+
+	static int fun() throws Exception{
+
+		throw new NullPointerException();
+
 	}
 }
