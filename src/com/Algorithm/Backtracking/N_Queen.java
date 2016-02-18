@@ -87,5 +87,4 @@ public class N_Queen {
 		}
 		return false;
 	}
-
 }

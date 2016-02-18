@@ -3,7 +3,8 @@ public class RatInAMaze {
 	static int N=4;
 
 	public static void main(String[] args) {
-		int maze[][]  =  { {1, 0, 0, 0},
+		int maze[][]  =  
+			  { {1, 0, 0, 0},
 				{1, 1, 0, 1},
 				{0, 1, 0, 0},
 				{1, 1, 1, 1}
@@ -57,7 +58,6 @@ public class RatInAMaze {
 			}
 			return false;
 		}
-
 	}
 
 	static boolean isSafe(int[][] maze,int x,int y){

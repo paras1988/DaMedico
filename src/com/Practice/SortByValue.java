@@ -43,5 +43,3 @@ class MyComparator<K,V>  implements Comparator<Map.Entry<K,V>>{
 		return ((Integer) o1.getValue()).compareTo( (Integer) o2.getValue() );
 	}
 }
-
-

@@ -7,6 +7,7 @@ public class StringPermutation {
 
 	public static void main(final String[] args) {
 		final String str = "ABCD";
+
 		/*
 		 * Set<String> hs = new HashSet<String>();
 		 * hs = fun(str, hs);
@@ -28,7 +29,6 @@ public class StringPermutation {
 			size++;
 		}
 		System.out.println(size);
-
 	}
 
 	private static Set<String> fun(final String str, Set<String> hs) {

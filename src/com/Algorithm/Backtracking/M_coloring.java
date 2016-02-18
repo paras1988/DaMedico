@@ -9,11 +9,12 @@ public class M_coloring {
 	       | /   |
 	      (0)---(1)
 		 */
-		int graph[][] = {{0, 1, 1, 1},
+		int graph[][] =
+		    	{{0, 1, 1, 1},
 				{1, 0, 1, 0},
 				{1, 1, 0, 1},
 				{1, 0, 1, 0},
-		};
+			};
 		int m = 3; // Number of colors
 		graphColoring (graph, m);
 	}
