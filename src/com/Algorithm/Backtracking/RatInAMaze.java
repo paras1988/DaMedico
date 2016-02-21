@@ -35,7 +35,6 @@ public class RatInAMaze {
 			}
 			System.out.println("\n");
 		}
-
 	}
 
 	private static boolean solveMazeUtil(int[][] maze, int i, int j, int[][] sol) {

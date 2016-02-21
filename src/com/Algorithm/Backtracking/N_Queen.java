@@ -23,7 +23,6 @@ public class N_Queen {
 			}
 			System.out.print("\n");
 		}
-
 	}
 	private static boolean solveNQUtil(int[][] board, int i) {
 		if(i==4) {
@@ -35,7 +34,6 @@ public class N_Queen {
 				if(solveNQUtil(board,i+1)) {
 					return true;
 				}
-
 				board[i][j]=0;
 			}
 		}
