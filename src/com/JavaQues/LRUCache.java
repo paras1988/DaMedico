@@ -1,38 +1,65 @@
 package com.JavaQues;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
-public class LRUCache<V> {
+public class LRUCache {
 
 	Map<Integer,Node> map=new HashMap<Integer,Node>();
-	private LinkedList<Node> list=new LinkedList<Node>();
 	Node head=null;
 	Node end=null;
-	
-	private class Node<V>{
-		V val;
+
+	private class Node{
+		Integer data;
 		Node next;
 		Node previous;
 	}
 
-	Node get(Integer i){
-		if(map.containsKey(i)){
-			Node val=(Node) map.get(i);
-			setHead(val);
-			return val;	
+	Node get(int key){
+		if(map.containsKey(key)){
+			Node n=map.get(key);
+			remove(n);
+			setHead(n);
 		}
 		return null;
 	}
 
-	private void setHead(Node node) {
-		if(list.contains(node)){
-			list.remove(node);
-			node.previous.next=node.next;
-			node.previous=null;
+	private void setHead(Node n) {
+		n.next=head;
+		n.previous=null;
+
+		if(head!=null){
+			head.previous=n;
 		}
-		node.next=head;
-		head=node;
+		head=n;
+		if(end==null){
+			end=head;
+		}
+	}
+
+	private void remove(Node n) {
+		if(n.next!=null){
+			n.next.previous=n.previous;
+		}else{
+			end=n.previous;
+		}
+
+		if(n.previous!=null){
+			n.previous.next=n.next;
+		}else{
+			head=n.next;
+		}
+	}
+
+	public void put(int key,Node n){
+		if(map.containsKey(key)){
+			Node oldValue=map.get(key);
+			remove(oldValue);
+			setHead(oldValue);
+			oldValue.data=n.data;
+		}
+		else{
+			setHead(n);
+		}
 	}
 }
