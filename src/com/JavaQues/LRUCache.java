@@ -1,65 +1,61 @@
 package com.JavaQues;
 
-import java.util.HashMap;
+
+/*http://stackoverflow.com/questions/23772102/lru-cache-in-java-with-generics-and-o1-operations
+ * http://www.programcreek.com/2013/03/leetcode-lru-cache-java/
+ */
 import java.util.Map;
 
-public class LRUCache {
 
-	Map<Integer,Node> map=new HashMap<Integer,Node>();
-	Node head=null;
-	Node end=null;
+public class LRUCache<K,V> {
 
-	private class Node{
-		Integer data;
-		Node next;
-		Node previous;
+	Map<K,Node<K,V>> cache;
+	Node<K,V> mostRecentNode;
+	Node<K,V> leastRecentNode;
+	int capacity;
+	int currentSize;
+
+	class Node<K,V>{
+		public Node(K key, V value) {
+			this.key=key;
+			this.value=value;
+		}
+		K key;
+		V value;
+		Node<K,V> next;
+		Node<K,V> prev;
 	}
 
-	Node get(int key){
-		if(map.containsKey(key)){
-			Node n=map.get(key);
-			remove(n);
-			setHead(n);
+	public V get(K key){
+		if(cache.containsKey(key)){
+			Node<K,V> node=cache.get(key);
+			remove(node);
+			setHead(node);
+			return node.value;
 		}
 		return null;
 	}
 
-	private void setHead(Node n) {
-		n.next=head;
-		n.previous=null;
 
-		if(head!=null){
-			head.previous=n;
+	public V put(K key,V value){
+		Node<K,V> oldVal=null;
+		if(cache.containsKey(key)){
+			oldVal=cache.get(key);
+			remove(oldVal);
+		}else if(currentSize==capacity){
+			remove(leastRecentNode);
 		}
-		head=n;
-		if(end==null){
-			end=head;
-		}
+		Node<K,V> newNode=new Node<K, V>(key, value);
+		cache.put(key, newNode);
+		setHead(newNode);
+		return oldVal.value;
 	}
 
-	private void remove(Node n) {
-		if(n.next!=null){
-			n.next.previous=n.previous;
-		}else{
-			end=n.previous;
-		}
+	private void remove(Node<K, V> node) {
 
-		if(n.previous!=null){
-			n.previous.next=n.next;
-		}else{
-			head=n.next;
-		}
 	}
 
-	public void put(int key,Node n){
-		if(map.containsKey(key)){
-			Node oldValue=map.get(key);
-			remove(oldValue);
-			setHead(oldValue);
-			oldValue.data=n.data;
-		}
-		else{
-			setHead(n);
-		}
+	private void setHead(Node<K, V> node) {
+
 	}
 }

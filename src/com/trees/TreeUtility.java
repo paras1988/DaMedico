@@ -62,13 +62,12 @@ public class TreeUtility {
 		// printPath(root, 5);
 
 		System.out
-				.println("\n*************Count BST subtrees that lie in given range*************************");
+		.println("\n*************Count BST subtrees that lie in given range*************************");
 		final Integer intArray5[] = { 10, 5, 1, 50, 40, 100 };
 		root = null;
 		root = BuildTree.build123Recur(root, intArray5);
 		final int count = countBSTSubtreeRange(root, 5, 45);
 		System.out.println(count);
-
 	}
 
 	private static int countBSTSubtreeRange(final Node root, final int low, final int high) {
