@@ -63,12 +63,111 @@ public class TreeUtility {
 
 		System.out
 		.println("\n*************Count BST subtrees that lie in given range*************************");
-		final Integer intArray5[] = { 10, 5, 1, 50, 40, 100 };
+		Integer intArray5[] = { 10, 5, 1, 50, 40, 100 };
 		root = null;
 		root = BuildTree.build123Recur(root, intArray5);
 		final int count = countBSTSubtreeRange(root, 5, 45);
 		System.out.println(count);
+
+		System.out
+		.println("\n*************Count BST subtrees that lie in given range*************************");
+		Integer[] intArray6 = {4 , 2, 6, 1, 3, 5, 7};
+		root = null;
+		root = BuildTree.build123Recur(root, intArray6);
+		final boolean isCousin = isCousin(root, 2, 7);
+		final boolean isCousin2 = isCousin(root, 1, 5);
+		final boolean isCousin3 = isCousin(root, 3, 7);
+		final boolean isCousin4 = isCousin(root, 2, 6);
+		System.out.println(isCousin+" "+isCousin2+" "+isCousin3+" "+isCousin4);
+
+		System.out
+		.println("\n*************getAncestors of Node*************************");
+		printAncestor(root,5);
+
 	}
+
+
+	private static boolean printAncestor(Node root, int i) {
+
+		if(root==null){
+			return false;
+		}
+		if(root.data.compareTo(i)==0){
+			return true;
+		}
+
+		if(printAncestor(root.left,i) || printAncestor(root.right,i)){
+			System.out.println(root.data);
+			return true;
+		}
+		return false;
+
+	}
+
+
+	@SuppressWarnings("unchecked")
+	private static boolean isCousin(Node root, int i, int j) {
+		Node parent1 =getParent(root,i);
+		Node parent2 =getParent(root,j);
+
+		if(parent1!=null && parent2!=null &&
+				parent1.data.compareTo(parent2.data)!=0){
+			int height1=getHeight(root,i,0);
+			int height2=getHeight(root,j,0);
+			if(height1==height2){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+	private static int getHeight(Node root, int i,int count) {
+
+		if(root==null){
+			return 0;
+		}
+		if(root.data.compareTo(i)==0){
+			return count;
+		}
+		int h=getHeight(root.left,i,count+1);
+		int r=getHeight(root.right,i,count+1);
+
+		if(h>r){
+			return h;
+		}else{
+			return r;
+		}
+	}
+
+
+	private static int getHeightUtil(Node root, int i, int count) {
+
+		return 0;
+	}
+
+
+	private static Node getParent(Node root, int i) {
+		if(root==null){
+			return null;
+		}else if(root.left==null && root.right==null){
+			return null;
+		}
+		else if((root.left!=null && root.left.data.compareTo(i)==0) ||
+				(root.right!=null && root.right.data.compareTo(i)==0) ){
+			return root;
+		}
+		else{
+			if(getParent(root.left,i)!=null){
+				return root.left;
+			}
+			if(getParent(root.right,i)!=null){
+				return root.right;
+			}
+		}
+		return null;
+	}
+
 
 	private static int countBSTSubtreeRange(final Node root, final int low, final int high) {
 		int t = 0;

@@ -3,7 +3,7 @@ package com.Algorithm.Backtracking2;
 public class StringPermutation {
 
 	public static void main(String[] args) {
-		permuteString("ABCD",0);
+		permuteString("ABC",0);
 	}
 
 	public static void permuteString(String str,int i){
@@ -16,6 +16,7 @@ public class StringPermutation {
 			str=swap(str,i,c);
 			permuteString(str,i+1);
 			str=swap(str,c,i);
+			System.out.println("=="+str);
 		}
 	}
 

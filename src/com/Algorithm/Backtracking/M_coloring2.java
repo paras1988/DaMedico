@@ -1,5 +1,6 @@
 package com.Algorithm.Backtracking;
-public class M_coloring {
+
+public class M_coloring2 {
 	public static void main(String args[])
 	{
 		/* Create following graph and test whether it is 3 colorable
@@ -20,34 +21,28 @@ public class M_coloring {
 	}
 
 	private static void graphColoring(int[][] graph, int m) {
-		int N=4;
-		int[] sol=new int[N];
-		for(int i=0;i<sol.length;i++){
-			sol[i]=0;
-		}
-		if(graphColoringUtil(graph,m,sol,0)){
-			for(int i=0;i<N;i++){
-				System.out.print(sol[i]+" ");
-			}
 
-		}
-		else{
-			System.out.println("No Sol Exists");
+		int[] sol=new int[graph[0].length];
+
+
+
+		if(graphColoringUitl(graph,m,sol,0)){
+			System.out.println(sol);
 		}
 	}
 
-	private static boolean graphColoringUtil(int[][] graph, int m, int[] sol,int i) {
+	private static boolean graphColoringUitl(int[][] graph, int m, int[] sol,int node) {
 
-		if(i==4) {
+		if(node==sol.length){
 			return true;
 		}
-		for(int j=10;j<14;j++){
-			if(isSafe(graph,i,j,sol)){
-				sol[i]=j;
-				if(graphColoringUtil(graph,m,sol,i+1)) {
+		for(int i=1;i<=m;i++){
+			if(isSafe(graph,node,i,sol)){
+				sol[node]=i;
+				if(graphColoringUitl(graph,m,sol,node+1)){
 					return true;
 				}
-				sol[i]=0;
+				sol[node]=0;
 			}
 		}
 		return false;

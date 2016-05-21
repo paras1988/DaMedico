@@ -25,7 +25,7 @@ public class KnightTourProblem {
 	 */
 
 	public static void main(final String[] args) {
-		final int N = 4;
+		final int N = 8;
 		knightTourProblem(N);
 	}
 
