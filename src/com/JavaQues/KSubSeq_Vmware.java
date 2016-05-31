@@ -5,7 +5,7 @@ public class KSubSeq_Vmware {
 	private static long counter = 0;
 
 
-	static long kSub(int k,int nums[]) {
+	static long kSub1(int k,int nums[]) {
 		process(nums, k);
 		return counter;
 	}
@@ -25,8 +25,8 @@ public class KSubSeq_Vmware {
 	public static void main(String[] args) {
 		int nums[]={1 , 1 , 3 , 2, 4};
 		int k=3;
-		System.out.println(kSub(k,nums));
-		System.out.println(solve(nums, k));
+		System.out.println(kSub1(k,nums));
+		//System.out.println(solve(nums, k));
 	}
 
 
@@ -34,7 +34,7 @@ public class KSubSeq_Vmware {
 	 * Sub-Routine to count numnber of sub-sequnces
 	 * @param d: the given divisor
 	 */
-	public static long kSub(int d,int[] arr, )
+	public static long kSub(int d,int[] arr, int h)
 	{
 		int Answer = 0;
 		int[] hash = new int[d];
@@ -70,8 +70,9 @@ public class KSubSeq_Vmware {
 		}
 		return Answer+hash[0]-1;
 	}
+}
 
-	/*private static long kSub( int K,int[] A)
+/*private static long kSub( int K,int[] A)
 	{
 		int N = A.length;
 		int[] B = new int[K];
@@ -97,5 +98,3 @@ public class KSubSeq_Vmware {
 		}
 		return ans;
 	}*/
-}
-

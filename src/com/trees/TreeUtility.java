@@ -1,7 +1,10 @@
 package com.trees;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class TreeUtility {
 
 	private static Node root;
@@ -84,8 +87,214 @@ public class TreeUtility {
 		.println("\n*************getAncestors of Node*************************");
 		printAncestor(root,5);
 
+		System.out
+		.println("\n*********Print a Binary Tree in Vertical and Horizontal Order*************************");
+		printVerticalAndHorizontalNodes(root,5);
+
+		System.out
+		.println("\n*********get LCA by stack*************************");
+		Node res= getLCAByStack(root,5,1);
+		Node res1= getLCAByStack(root,3,1);
+		Node res2= getLCAByStack(root,512,1);
+		Node res3= getLCAByStack(root,7,5);
+		System.out.println(res.data+" "+res1.data+" "+(res2!=null?res2.data:null)+" "+res3.data+" ");
+
+		System.out
+		.println("\n*********Print Binary Tree in 2-Dimensions*************************");
+		print2D(root,"  ");
+
+		System.out
+		.println("\n*********Sink Odd nodes in Binary Tree*************************");
+		//IMP.. As I am doing operation here from bottom so need postorder...
+		Integer[] intArray7 ={5,8,2,1,4,9,10};
+		root = null;
+		root = BuildTree.build123Recur(root, intArray7);
+		sinkOddNodes(root);
+		System.out.println();
+
+		System.out
+		.println("\n*********Print all root to leaf paths*************************");
+		root = null;
+		root = BuildTree.build123Recur(root, intArray7);
+		printAllRootToLeafPaths(root,new int[1000],0);
+
+
 	}
 
+
+	private static void printAllRootToLeafPaths(Node root,int[] path,int i) {
+		if (root==null) {
+			return;
+		}
+
+
+		path[i]=(Integer) root.data;
+
+		if(root.left==null && root.right==null){
+			for(int k=0;k<path.length;k++){
+				System.out.print(path[k]);
+			}
+			System.out.println();
+			return;
+		}else{
+			printAllRootToLeafPaths(root.left,path,i+1);
+			printAllRootToLeafPaths(root.right,path,i+1);
+		}
+	}
+
+
+	private static void sinkOddNodes(Node root) {
+		if(root==null) {
+			return;
+		}
+		sinkOddNodes(root.left);
+		sinkOddNodes(root.right);
+
+		if(root!=null && (Integer)root.data%2!=0) {
+			sink(root);
+		}
+	}
+
+
+	private static void sink(Node root) {
+		if(root==null){
+			return;
+		}
+		if(root.left!=null && (Integer)root.left.data%2==0 && (Integer)root.data%2!=0){
+			swap(root,root.left);
+			sink(root.left);
+		}
+		if(root.right!=null && (Integer)root.right.data%2==0 && (Integer)root.data%2!=0){
+			swap(root,root.right);
+			sink(root.left);
+		}
+	}
+
+
+	private static void swap(Node a, Node b) {
+		Node temp=new Node(a.data);
+
+		a.data=b.data;
+		b.data=temp.data;
+	}
+
+
+	private static void print2D(Node root,String space) {
+		if(root==null){
+			return;
+		}
+		space=space+space;
+		print2D(root.right,space);
+		System.out.println(space+""+root.data);
+		print2D(root.left,space);
+	}
+
+
+	private static Node getLCAByStack(Node root, int i, int j) {
+		Stack s1=new Stack();
+		Stack s2=new Stack();
+		getAncestorsInStack(root,i,s1);
+		getAncestorsInStack(root,j,s2);
+
+		Node res=null;
+		if(s1.top()==null || s2.top()==null){
+			return null;
+		}
+		while(s1.top()!=null && s2.top()!=null &&
+				s1.top().data.compareTo(s2.top().data)==0){
+
+			res=s1.pop();
+			s2.pop();
+		}
+		return res;
+	}
+
+
+
+	private static boolean getAncestorsInStack(Node root, int i, Stack s) {
+
+		if(root==null){
+			return false;
+		}
+		if(root.data.compareTo(i)==0){
+			return true;
+		}
+		if(getAncestorsInStack(root.left,i,s) ||
+				getAncestorsInStack(root.right,i,s)){
+			s.push(root);
+			return true;
+		}
+
+		return false;
+	}
+
+
+	private static void printVerticalAndHorizontalNodes(Node root, int i) {
+		List<Integer> list=new LinkedList<Integer>();
+		computeMinAndMax(root,list);
+		int min=list.get(0);
+		int max=list.get(1);
+
+		System.out.println("---------Vertical------------");
+		for(int t=min;t<=max;t++){
+			printNodesInVertical(root,t,0);
+			System.out.println();
+		}
+		System.out.println("---------Horizontal------------");
+		for(int t=0;t<=max;t++){
+			printNodesInHorizontal(root,t,0);
+			System.out.println();
+		}
+	}
+
+
+	private static void printNodesInHorizontal(Node root, int t, int i) {
+
+		if(root==null){
+			return;
+		}
+		if(t==i){
+			System.out.print(root.data);
+		}
+		printNodesInHorizontal(root.left,t,i+1);
+		printNodesInHorizontal(root.right,t,i+1);
+	}
+
+
+	private static void printNodesInVertical(Node root, int t,int hd) {
+		if(root==null){
+			return;
+		}
+		if(t==hd){
+			System.out.print(root.data);
+		}
+		printNodesInVertical(root.left,t,hd-1);
+		printNodesInVertical(root.right,t,hd+1);
+	}
+
+
+	private static void computeMinAndMax(Node root,List<Integer> list) {
+		int min=0;
+		int max=0;
+		Node temp=root;
+		while(root.left!=null){
+			min--;
+			root=root.left;
+		}
+		root=temp;
+		while(root.right!=null){
+			max++;
+			root=root.right;
+		}
+		list.add(min);
+		list.add(max);
+	}
+
+
+	class Values{
+		int min;
+		int max;
+	}
 
 	private static boolean printAncestor(Node root, int i) {
 
@@ -139,13 +348,6 @@ public class TreeUtility {
 			return r;
 		}
 	}
-
-
-	private static int getHeightUtil(Node root, int i, int count) {
-
-		return 0;
-	}
-
 
 	private static Node getParent(Node root, int i) {
 		if(root==null){

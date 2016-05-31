@@ -29,11 +29,3 @@ Department d,
 Employee e
 where d.id=e.dept_id
 group by e.dept_id;
-
---2.
--- Get emplyee_id and 1
-
-
-
-
- 

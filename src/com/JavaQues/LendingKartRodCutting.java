@@ -1,45 +1,36 @@
 package com.JavaQues;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
+
 public class LendingKartRodCutting {
 
-	static int count1=0;
-	static int count2=0;
 
-	public static void main(String[] args) {
-		int n=100000;
-		System.out.println(rodCutting(n)+" "+count1);
-		System.out.println(rodCuttingDP_bottomUp(n)+" "+count2);
+	public static void main(String[] args) throws IOException {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String line = br.readLine();
+		int testCases = Integer.parseInt(line);
+
+		List<Integer> list=new LinkedList<Integer>();
+		for(int i=1;i<=testCases;i++){
+			String input = br.readLine();
+			int n = Integer.parseInt(input);
+			list.add(n);
+		}
+		for(Integer i:list){
+			System.out.println(rodCutting(i));
+		}
 	}
 
 	private static int rodCutting(int n) {
-
-		count1++;
-		if(n==0 || n==1){
-			return 0;
+		int count=0;
+		for(int i=3;i<=n;i=2*i+1){
+			count++;
 		}
-
-		if(n%2==0){
-			return 2*rodCutting(n/2);
-		}else{
-			return 1+rodCutting(n/2+1)+rodCutting(n/2-1);
-		}
-	}
-
-	private static int rodCuttingDP_bottomUp(int n){
-
-		int[] res=new int[n+1];
-		res[0]=0;
-		res[1]=0;
-
-		for(int i=2;i<=n;i++){
-			count2++;
-			if(i%2==0){
-				res[i]=res[i/2]*2;
-			}else{
-				res[i]=1+res[i/2+1]+res[i/2-1];
-			}
-		}
-
-		return res[n];
+		return count;
 	}
 }

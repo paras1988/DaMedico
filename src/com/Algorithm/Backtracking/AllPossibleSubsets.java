@@ -13,17 +13,16 @@ public class AllPossibleSubsets {
 
 		l.add(1);
 		l.add(2);
-		//	l.add(3);
-
+		l.add(3);
 
 		subsets((ArrayList<Integer>)l);
 		System.out.println(res);
-
 	}
+
 	public static void subsets(ArrayList<Integer> a) {
 		ArrayList<Integer> temp=new ArrayList<Integer>();
 		N=a.size();
-		subsetsUtil(temp,0);
+		subsetsUtil(temp,1);
 	}
 
 	private static void subsetsUtil(ArrayList<Integer> arr,int index) {
@@ -33,10 +32,9 @@ public class AllPossibleSubsets {
 			return;
 		}
 
-		subsetsUtil(arr,index + 1);
+		subsetsUtil(arr,index + 1);         //you are not including anything.
 		arr.add(l.get(index));
-		subsetsUtil(arr,index + 1);
+		subsetsUtil(arr,index + 1);         //after including index.
 		arr.remove(arr.size() - 1);
-
 	}
 }

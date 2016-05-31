@@ -10,8 +10,8 @@ public class GeneratePermutations {
 	public static void main(String[] args) {
 		ArrayList<Integer> arr=new ArrayList<Integer>();
 		arr.add(1);
+		arr.add(1);
 		arr.add(2);
-		arr.add(3);
 		N=arr.size();
 		permute(arr,0);
 
@@ -23,10 +23,11 @@ public class GeneratePermutations {
 			return;
 		}
 		for(int i=start;i<a.size();i++){
-			swap(a,start,i);
-			permute(a,start+1);
-			swap(a,i,start);
-			System.out.println("==" +a);
+			if(a.get(start)!=a.get(i) || start==i){   //This is 'combination' which discard repetition.
+				swap(a,start,i);
+				permute(a,start+1);
+				swap(a,i,start);
+			}
 		}
 	}
 
@@ -38,5 +39,4 @@ public class GeneratePermutations {
 		a.set(m,n2);
 		a.set(n,m2);
 	}
-
 }

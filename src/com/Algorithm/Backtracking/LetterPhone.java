@@ -5,7 +5,13 @@ import java.util.ArrayList;
 public class LetterPhone {
 
 	public static void main(String[] args) {
-		System.out.println(letterCombinations("123"));
+		System.out.println(letterCombinations("1234"));
+		System.out.println(letterCombinationsBacktrack("1234"));
+	}
+
+	private static char[] letterCombinationsBacktrack(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public static ArrayList<String> letterCombinations(String A) {
