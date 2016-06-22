@@ -118,27 +118,25 @@ public class TreeUtility {
 		root = BuildTree.build123Recur(root, intArray7);
 		printAllRootToLeafPaths(root,new int[1000],0);
 
-
 	}
 
 
 	private static void printAllRootToLeafPaths(Node root,int[] path,int i) {
-		if (root==null) {
+		if(root==null){
 			return;
 		}
 
-
-		path[i]=(Integer) root.data;
-
 		if(root.left==null && root.right==null){
-			for(int k=0;k<path.length;k++){
-				System.out.print(path[k]);
+			for(int j=0;j<path.length && path[j]!=0;j++){
+				System.out.print(path[j]);
 			}
 			System.out.println();
 			return;
 		}else{
-			printAllRootToLeafPaths(root.left,path,i+1);
-			printAllRootToLeafPaths(root.right,path,i+1);
+			path[i]=(Integer) root.data;
+			i=i+1;
+			printAllRootToLeafPaths(root.left, path, i);
+			printAllRootToLeafPaths(root.right, path, i);
 		}
 	}
 
