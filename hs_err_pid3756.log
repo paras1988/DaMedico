@@ -198,7 +198,7 @@ Dynamic libraries:
 
 VM Arguments:
 jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:56061 -Dfile.encoding=Cp1252 -Xbootclasspath:C:\Program Files\Java\jdk1.7.0_67\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_67\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_67\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_67\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_67\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_67\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_67\lib\tools.jar 
-java_command: com.JavaQues.HoneyWell1_CrazyTree
+java_command: HoneyWell1_CrazyTree
 Launcher Type: SUN_STANDARD
 
 Environment Variables:
