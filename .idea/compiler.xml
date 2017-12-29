@@ -8,6 +8,8 @@
       <module name="DaM_test" target="1.8" />
       <module name="DaMedico_main" target="1.8" />
       <module name="DaMedico_test" target="1.8" />
+      <module name="groovyCode_main" target="1.8" />
+      <module name="groovyCode_test" target="1.8" />
       <module name="groovyTest2_main" target="1.8" />
       <module name="groovyTest2_test" target="1.8" />
       <module name="groovyTest_main" target="1.8" />
