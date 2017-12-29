@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DaMedico.iml" filepath="$PROJECT_DIR$/.idea/DaMedico.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DaMedico_main.iml" filepath="$PROJECT_DIR$/.idea/modules/DaMedico_main.iml" group="DaMedico" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DaMedico_test.iml" filepath="$PROJECT_DIR$/.idea/modules/DaMedico_test.iml" group="DaMedico" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DaMedico.iml" filepath="$PROJECT_DIR$/.idea/modules/DaMedico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/groovyTest/groovyTest.iml" filepath="$PROJECT_DIR$/groovyTest/groovyTest.iml" group="groovyTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/groovyTest2/groovyTest2.iml" filepath="$PROJECT_DIR$/.idea/modules/groovyTest2/groovyTest2.iml" group="groovyTest2" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/groovyTest2/groovyTest2_main.iml" filepath="$PROJECT_DIR$/.idea/modules/groovyTest2/groovyTest2_main.iml" group="groovyTest2" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/groovyTest2/groovyTest2_test.iml" filepath="$PROJECT_DIR$/.idea/modules/groovyTest2/groovyTest2_test.iml" group="groovyTest2" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaTest/javaTest.iml" filepath="$PROJECT_DIR$/.idea/modules/javaTest/javaTest.iml" group="javaTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaTest/javaTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/javaTest/javaTest_main.iml" group="javaTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaTest/javaTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/javaTest/javaTest_test.iml" group="javaTest" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/main.iml" filepath="$PROJECT_DIR$/src/main/main.iml" />
     </modules>
   </component>
 </project>

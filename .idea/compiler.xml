@@ -2,8 +2,20 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="Da_main" target="1.8" />
+      <module name="Da_test" target="1.8" />
+      <module name="DaM_main" target="1.8" />
+      <module name="DaM_test" target="1.8" />
       <module name="DaMedico_main" target="1.8" />
       <module name="DaMedico_test" target="1.8" />
+      <module name="groovyTest2_main" target="1.8" />
+      <module name="groovyTest2_test" target="1.8" />
+      <module name="groovyTest_main" target="1.8" />
+      <module name="groovyTest_test" target="1.8" />
+      <module name="javaTest_main" target="1.8" />
+      <module name="javaTest_test" target="1.8" />
+      <module name="mig_main" target="1.8" />
+      <module name="mig_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
