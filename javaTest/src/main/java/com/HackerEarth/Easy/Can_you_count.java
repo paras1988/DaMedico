@@ -1,5 +1,56 @@
 package com.HackerEarth.Easy;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+
+public class Can_you_count {
+  public static void main(String args[]) throws Exception {
+
+    //Scanner
+    Scanner s = new Scanner(System.in);
+    Integer testcases = Integer.parseInt(s.nextLine());                 // Reading input from STDIN
+
+    for (int kk = 1; kk <= testcases; kk++) {
+      String inputString = s.nextLine();
+
+      Map<Character, Boolean> vowelMap = new HashMap<>();
+      vowelMap.put('a', false);
+      vowelMap.put('e', false);
+      vowelMap.put('i', false);
+      vowelMap.put('o', false);
+      vowelMap.put('u', false);
+
+      int count = 0;
+      List<Integer> res = new ArrayList<>();
+      char[] characters = inputString.toCharArray();
+
+      for (int i = 0; i < characters.length; i++) {
+        if (!vowelMap.containsKey(Character.toLowerCase(characters[i])) && characters[i] != '_') {
+          continue;
+        }
+        if (characters[i] == '_') {
+          res.add(count);
+          continue;
+        }
+        if (count < 5 && !vowelMap.get(Character.toLowerCase(characters[i]))) {
+          vowelMap.put(characters[i], true);
+          count++;
+        }
+
+      }
+      long result = 1;
+      for (int i = 0; i < res.size(); i++) {
+        result = result * res.get(i);
+      }
+      System.out.println(result);
+    }
+  }
+
+}
 /*
 You are given a string s consisting of lowercase English letters and/or '_' (underscore).
 You have to replace all underscores (if any) with vowels present in the string.
@@ -72,7 +123,3 @@ So output is 2.
 
 Test-case 2: There are no '_' underscores. So we cannot do any replacement. So given string is the only answer. Output 1.
  */
-public class Can_you_count {
-
-
-}

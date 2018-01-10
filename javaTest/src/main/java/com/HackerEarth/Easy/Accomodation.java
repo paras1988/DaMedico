@@ -2,6 +2,78 @@ package com.HackerEarth.Easy;
 
 import java.util.Scanner;
 import java.util.Set;
+public class Accomodation {
+
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+
+    String[] secondLine = s.nextLine().split("\\s+");
+    int n = Integer.parseInt(secondLine[0]);
+    int k = Integer.parseInt(secondLine[1]);
+
+    String[] arr1 = s.nextLine().split("\\s+");
+    Integer[] arr = new Integer[n];
+    for (int i = 0; i < n; i++) {
+      arr[i] = Integer.parseInt(arr1[i]);
+    }
+    System.out.print(new Accomodation().getChangesCount(arr, 0, k));
+    System.out.print(new Accomodation().getChangesCount2(arr, arr.length - 1, k));
+    System.out.print(new Accomodation().getChangesCount3(arr, k));
+
+  }
+
+  //my method
+  private int getChangesCount(Integer[] arr, int s, int k) {
+
+    int changes = 0;
+    for (int i = s; i < arr.length; i++) {
+      if (k - arr[i] == 0) {
+        changes += 1;
+      } else if (k - arr[i] < 0) {
+        break;
+      } else {
+        changes += getChangesCount(arr, i, k - arr[i]);
+      }
+    }
+    return changes;
+  }
+
+  //geeksForGeeks
+  private int getChangesCount2(Integer[] arr, int e, int k) {
+
+    if (k == 0) {
+      return 1;
+    }
+    if (k < 0) {
+      return 0;
+    }
+    if (e < 0 && k >= 1) {
+      return 0;
+    }
+    return getChangesCount2(arr, e, k - arr[e]) + getChangesCount2(arr, e - 1, k);
+  }
+
+  //dynamic Prog.
+  private int getChangesCount3(Integer[] arr, int k) {
+    int mat[][] = new int[arr.length + 1][k + 1];
+
+    for (int i = 0; i < arr.length + 1; i++) {
+      mat[i][0] = 1;
+    }
+    for (int i = 0; i <= k; i++) {
+      mat[0][i] = 0;
+    }
+
+    for (int i = 1; i < arr.length + 1; i++) {
+      for (int j = 1; j <= k; j++) {
+        mat[i][j] = ((j - arr[i - 1]) < 0 ? 0 : mat[i][j - arr[i - 1]]) + mat[i - 1][j];
+      }
+    }
+    return mat[arr.length][k];
+  }
+}
+
+
 
 /*
  There is a hotel with
@@ -105,74 +177,4 @@ import java.util.Set;
  5
 
  */
-public class Accomodation {
 
-  public static void main(String[] args) {
-    Scanner s = new Scanner(System.in);
-
-    String[] secondLine = s.nextLine().split("\\s+");
-    int n = Integer.parseInt(secondLine[0]);
-    int k = Integer.parseInt(secondLine[1]);
-
-    String[] arr1 = s.nextLine().split("\\s+");
-    Integer[] arr = new Integer[n];
-    for (int i = 0; i < n; i++) {
-      arr[i] = Integer.parseInt(arr1[i]);
-    }
-    System.out.print(new Accomodation().getChangesCount(arr, 0, k));
-    System.out.print(new Accomodation().getChangesCount2(arr, arr.length - 1, k));
-    System.out.print(new Accomodation().getChangesCount3(arr, k));
-
-  }
-
-  //my method
-  private int getChangesCount(Integer[] arr, int s, int k) {
-
-    int changes = 0;
-    for (int i = s; i < arr.length; i++) {
-      if (k - arr[i] == 0) {
-        changes += 1;
-      } else if (k - arr[i] < 0) {
-        break;
-      } else {
-        changes += getChangesCount(arr, i, k - arr[i]);
-      }
-    }
-    return changes;
-  }
-
-  //geeksForGeeks
-  private int getChangesCount2(Integer[] arr, int e, int k) {
-
-    if (k == 0) {
-      return 1;
-    }
-    if (k < 0) {
-      return 0;
-    }
-    if (e < 0 && k >= 1) {
-      return 0;
-    }
-    return getChangesCount2(arr, e, k - arr[e]) + getChangesCount2(arr, e - 1, k);
-  }
-
-  //dynamic Prog.
-  private int getChangesCount3(Integer[] arr, int k) {
-    int mat[][] = new int[arr.length + 1][k + 1];
-
-    for (int i = 0; i < arr.length + 1; i++) {
-      mat[i][0] = 1;
-    }
-    for (int i = 0; i <= k; i++) {
-      mat[0][i] = 0;
-    }
-
-    for (int i = 1; i < arr.length + 1; i++) {
-      for (int j = 1; j <= k; j++) {
-        mat[i][j] = ((j - arr[i - 1]) < 0 ? 0 : mat[i][j - arr[i - 1]]) + mat[i - 1][j];
-      }
-    }
-
-    return mat[arr.length][k];
-  }
-}
