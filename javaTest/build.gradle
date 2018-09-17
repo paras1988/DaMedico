@@ -4,3 +4,7 @@ apply plugin: 'java'
 repositories {
   jcenter()
 }
+
+dependencies{
+  compile group: 'com.jcraft', name: 'jsch', version: '0.1.54'
+}

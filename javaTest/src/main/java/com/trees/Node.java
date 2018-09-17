@@ -1,6 +1,6 @@
 package com.trees;
 
-public class Node {
+public class Node{
 
 	Comparable data;
 	Node left=null;

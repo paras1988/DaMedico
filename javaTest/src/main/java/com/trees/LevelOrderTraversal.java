@@ -7,7 +7,7 @@ public class LevelOrderTraversal {
 		root = BuildTree.build123Recur(root, intArray);
 		TreeUtility.nonRecursiveTreeInorder(root);
 		nonRecursiveLOT(root);
-	
+
 	}
 	
 	void recursiveLOT(Node node){

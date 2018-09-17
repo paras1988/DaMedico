@@ -6,7 +6,7 @@ public class BFS {
 
 	int V;
 	final LinkedList<Integer> a[];
-	 boolean visited[]; 
+	boolean visited[];
 	
 	BFS(int v){
 		V=v;

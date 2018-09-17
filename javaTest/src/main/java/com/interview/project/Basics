@@ -1,0 +1,48 @@
+Import logs from Tables
+
+Avro file writer ->
+    Need avsc
+    Need Query of selecting data
+    Need parameters where query get fired.
+    Store output avros to target hdfs
+
+From avros create Logs and metadata dictionary for lookup.
+On fly lookups for drop create distributed cache
+
+RUN MR CODE:
+    for different things:
+    Main intrecacy: Jobs- Proxies, Rename, Procs
+
+Engine:
+    SubQuery Handling
+    StatementResult . parent, childs
+
+   Observer: Subject: Observers-  Observers register themselves with the Subject as they are created.
+   Whenever the Subject changes, it broadcasts to all registered Observers that it has changed
+
+   Visitor: Many distinct and unrelated operations need to be performed on node objects today.
+   Builder
+   Factory
+
+   Strategy-  - encapsulate interface details in a base class, and
+   bury implementation details in derived classes. Clients can then couple themselves to an interface
+   Singleton
+
+Post:
+    Post Queries of Hive
+    DataDump to local
+    Some Sqooped to Mysql
+    Neo4j Graph creation
+
+Flamingo:
+    Have web services, spring boot have UI embedded in Servlet
+    Gephi - Data Visualization.
+    Performance Issue
+
+    Flamingo Procs: Traversal APIs.
+    Metrics on cluster,
+    Cluster creation(Performance Issue),
+    removing proxy based
+    clusters.
+
+    Using druid for reports

@@ -3,10 +3,9 @@ package com.Algo.Graph;
 import java.util.LinkedList;
 
 public class DFS {
-	
 	int V;
-	final LinkedList<Integer> a[];
-	 boolean visited[]; 
+	final LinkedList<Integer> a[]; // 	final Integer test[ ] = new Integer[10];
+	boolean visited[];
 	
 	DFS(int v){
 		V=v;

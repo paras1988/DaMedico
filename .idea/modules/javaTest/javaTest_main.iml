@@ -5,9 +5,9 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../javaTest/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../javaTest/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../javaTest/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.jcraft:jsch:0.1.54" level="project" />
   </component>
 </module>

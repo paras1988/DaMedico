@@ -1,0 +1,76 @@
+Spring framework core concepts are “Dependency Injection” and “Aspect Oriented Programming”.
+
+Inversion of Control (IoC) is the mechanism to achieve loose-coupling between Objects dependencies.
+ To achieve loose coupling and dynamic binding of the objects at runtime,
+Suppose we have an object Employee and it has a dependency on object Address.
+ We would define a bean corresponding to Employee that will define its dependency on object Address.
+
+When Spring tries to create an Employee object, it will see that Employee has a dependency on Address,
+so it will first create the Address object (dependent object)
+and then inject it into the Employee object.
+
+Inversion of Control (IOC) and Dependency Injection (DI) are used interchangeably.
+ IOC is achieved through DI.
+
+ By DI, the responsibility of creating objects is shifted from our application code
+ to the Spring container; this phenomenon is called IOC.
+
+ Dependency Injection can be done by setter injection or constructor injection.
+
+Partial dependency: can be injected using setter injection
+Overriding: Setter injection overrides the constructor injection.
+Changes: We can easily change the value by setter injection.
+
+Setter injection:
+@Named
+public class Foo {
+
+    private Bar bar;
+
+    @Inject
+    @Required
+    public void setBar(Bar bar) {
+        this.bar = bar;
+    }
+}
+
+Constructor Injection:
+@Named
+public class Foo {
+
+    private Bar bar;
+
+    @Inject
+    public Foo(Bar bar) {
+        this.bar = bar;
+    }
+}
+
+
+
+Spring guarantees exactly one shared bean instance for the given id per IoC container,
+unlike Java Singletons, where the Singleton hardcodes the scope of an object
+such that one and only one instance of a particular class will ever be created per ClassLoader.
+
+----------
+Spring beans are not thread safe per se:
+Singletons are about creation. This design pattern ensures that only one instance of a class is created.
+
+Thread safety is about execution. A piece of code is thread-safe if it only manipulates
+shared data structures in a manner that guarantees safe execution by multiple threads at the same time.
+-----------
+ways to configure a class as Spring Bean:
+XML Configuration
+Java Based Configuration @Bean
+Annotation Based Configuration: @Component
+------------
+Spring Bean Life Cycle
+ @PostConstruct, @PreDestroy- annotations for defining post-init and pre-destroy methods.
+
+ ----------
+
+ Spring MVC is built on top of Model-View-Controller architecture.
+ DispatcherServlet is the Front Controller in the Spring MVC application that takes care of
+ all the incoming requests and delegate it to different controller handler methods.
+
+ -------

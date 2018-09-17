@@ -5,9 +5,6 @@ public class Queue {
 	QueueElement qEl=null;
 	QueueElement head=null;
 
-	public Queue() {
-	}
-
 	boolean enQueue(Node node){
 		if(qEl==null){
 			qEl=new QueueElement(node);
@@ -31,9 +28,6 @@ public class Queue {
 
 		QueueElement(Node node){
 			this.node=node;
-		}
-
-		QueueElement(){
 		}
 	}
 	

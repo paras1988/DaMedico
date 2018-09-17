@@ -6,43 +6,35 @@ public class HeightBalancedBinaryTree {
 		Node root = null;
 		Integer[] intArray7 ={5,8,9,10};
 		root = BuildTree.build123Recur(root, intArray7);
-		int res=new HeightBalancedBinaryTree().isBalanced(root);
-		System.out.println(res);
+		System.out.println(new HeightBalancedBinaryTree().isBalanced(root));
+
+		root = null;
+		Integer[] intArray8 ={5,4,6,10};
+		root = BuildTree.build123Recur(root, intArray8);
+		System.out.println(new HeightBalancedBinaryTree().isBalanced(root));
+
+		root = null;
+		Integer[] intArray9 ={5,4,6};
+		root = BuildTree.build123Recur(root, intArray9);
+		System.out.println(new HeightBalancedBinaryTree().isBalanced(root));
 	}
 
-	public int isBalanced(Node root){
-
-		boolean res=isBalanced2(root);
-		if(res){
-			return 1;
-		}else{
-			return 0;
-		}
-	}
-	public Boolean isBalanced2(Node root){
-		if(root==null){
+	private boolean isBalanced(Node root){
+		if(root == null){
 			return true;
 		}
-		if(!isBalanced2(root.left) ||
-				!isBalanced2(root.right) ||
-				Math.abs(heightOfTree(root.left)- heightOfTree(root.right))>1){
-			return false;
+		if(isBalanced(root.left)==isBalanced(root.right) && Math.abs(height(root.left) - height(root.right)) <= 1 ){
+			return true;
 		}
-		return true;
+		return false;
 	}
 
-	private int heightOfTree(Node root) {
-		if(root==null){
+	private int height(Node root) {
+		if(root == null){
 			return 0;
 		}
-
-		int lht=heightOfTree(root.left);
-		int rht=heightOfTree(root.right);
-
-		if(lht>rht){
-			return lht+1;
-		}else{
-			return rht+1;
-		}
+		return 1 + Math.max(height(root.left), height(root.right));
 	}
+
+
 }

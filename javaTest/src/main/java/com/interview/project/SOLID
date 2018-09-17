@@ -1,0 +1,17 @@
+    S - Single Responsibility Principle (known as SRP)-class or module should do one thing only.
+
+    O - Open/Closed Principle- write a class that does what it needs to
+    flawlessly and not assuming that people should come in and change it later
+
+    L - Liskov’s Substitution Principle-  that any child type of a parent type
+    should be able to stand in for that parent without things blowing up.
+
+    I - Interface Segregation Principle - should favor many, smaller,
+    client-specific interfaces over one larger
+
+    D - Dependency Inversion Principle-  write code that depends upon
+    abstractions rather than upon concrete details
+
+
+    DRY Principle: Don't Repeat Yourself. DRY stand for "Don't Repeat Yourself,"
+    KISS: Keep It Simple, Stupid

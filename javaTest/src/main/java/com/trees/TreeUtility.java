@@ -26,14 +26,17 @@ public class TreeUtility {
 		System.out.println();
 		System.out.println("**************************************");
 		final Integer intArray2[] = { 5, 2, 6, 1, 3, 4, 7 };
+		root = null;
 		root = BuildTree.build123Recur(root, intArray2);
 		final int maxDepth = maxDepth(root);
 		System.out.println(maxDepth);
 		System.out.println("**************************************");
 		root = null;
 		root = BuildTree.build123Recur(root, intArray);
-		final boolean hasPathSum = hasPathSum(root, 15);
-		System.out.println(hasPathSum);
+		System.out.println(hasPathSum(root, 15));
+		System.out.println(hasPathSum(root, 16));
+		System.out.println(hasPathSum(root, 17));
+
 		System.out.println("**************************************");
 		root = null;
 		root = BuildTree.build123Recur(root, intArray);
@@ -118,6 +121,11 @@ public class TreeUtility {
 		root = BuildTree.build123Recur(root, intArray7);
 		printAllRootToLeafPaths(root,new int[1000],0);
 
+		//left view
+		//right view
+		//bottom view
+		//upper view
+		//perimeter
 	}
 
 
