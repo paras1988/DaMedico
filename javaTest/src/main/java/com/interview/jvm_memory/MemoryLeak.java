@@ -1,4 +1,4 @@
-package com.interview;
+package com.interview.jvm_memory;
 
 import java.util.ArrayList;
 import java.util.Random;

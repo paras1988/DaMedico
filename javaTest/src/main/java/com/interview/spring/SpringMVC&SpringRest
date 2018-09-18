@@ -1,0 +1,90 @@
+SPRING MVC:
+
+ Spring MVC is built on top of Model-View-Controller architecture.
+ DispatcherServlet is the Front Controller in the Spring MVC application that takes care of
+ all the incoming requests and delegate it to different controller handler methods.
+
+
+Eg
+
+
+@RequestMapping(value="{id}/mvc" , method = RequestMEthod.GET)
+ModelAndView fun(@PathVariable String id,
+                  @RequestParam ("name")String name){
+
+
+                  ModelAndView mod = new ..
+                  Bean bean  = new ..
+                  mod.addObjec("beanNameInJSP", bean); -- Can add more.
+                  mode.setViewName("viewNameofJSP");
+                  return mod;
+                  }
+
+
+ URL: localhost:8080/sample/23/mvc? name=Paras
+                             |               |
+                             |               |
+                             PathVariable    ReuestParam
+
+----------------------------------
+
+@ModelAttribute: DataBinding.
+
+e.g.
+@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+public String submit(@ModelAttribute("employee") Employee employee) { --> JSP have field of this class
+    // Code that uses the employee object
+
+    return "employeeView";      -->respective JSP file is going to be called as a View representative.
+}
+
+-------------------------------
+
+ExceptionHadnling:
+    @ExceptionHandler(Anyexception.class)
+    ModelAndView errorandleer(Req.//){
+        return View...
+    }
+
+ -----------------------
+
+SPRING REST: (Important . here demonstrate Spring boot and spring rest)
+
+
+ public class Employee implements Serializable{
+    @JsonSerialize(using=DateSerializer.class)
+ 	    public Date getCreatedDate() {
+ 		    return createdDate;
+ 	}
+ 	...
+ 	public int getId() {
+    		return id;
+    	}
+    public String getName() {
+    		return name;
+    	}
+}
+
+  @RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
+  	public @ResponseBody Employee getEmployee(@PathVariable("id") int empId) {
+  		logger.info("Start getEmployee. ID="+empId);
+
+//storing all the employees data in the HashMap empData.
+  		return empData.get(empId);
+  	}
+
+
+    Output:
+    {
+        "id":1
+        "name": "Paras"
+        "date" : 1212
+    }
+
+  	@ResponseBody annotation is used to map the response object in the response body.
+  	Once the response object is returned by the handler method, MappingJackson2HttpMessageConverter
+  	kicks in and convert it to JSON response.
+
+
+-----------------------------
+

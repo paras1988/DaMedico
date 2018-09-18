@@ -26,6 +26,7 @@ Engine:
 
    Strategy-  - encapsulate interface details in a base class, and
    bury implementation details in derived classes. Clients can then couple themselves to an interface
+
    Singleton
 
 Post:
@@ -37,6 +38,7 @@ Post:
 Flamingo:
     Have web services, spring boot have UI embedded in Servlet
     Gephi - Data Visualization.
+
     Performance Issue
 
     Flamingo Procs: Traversal APIs.

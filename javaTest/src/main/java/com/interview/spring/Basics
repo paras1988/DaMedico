@@ -1,51 +1,7 @@
-Spring framework core concepts are “Dependency Injection” and “Aspect Oriented Programming”.
+IOC container:
 
-Inversion of Control (IoC) is the mechanism to achieve loose-coupling between Objects dependencies.
- To achieve loose coupling and dynamic binding of the objects at runtime,
-Suppose we have an object Employee and it has a dependency on object Address.
- We would define a bean corresponding to Employee that will define its dependency on object Address.
-
-When Spring tries to create an Employee object, it will see that Employee has a dependency on Address,
-so it will first create the Address object (dependent object)
-and then inject it into the Employee object.
-
-Inversion of Control (IOC) and Dependency Injection (DI) are used interchangeably.
- IOC is achieved through DI.
-
- By DI, the responsibility of creating objects is shifted from our application code
- to the Spring container; this phenomenon is called IOC.
-
- Dependency Injection can be done by setter injection or constructor injection.
-
-Partial dependency: can be injected using setter injection
-Overriding: Setter injection overrides the constructor injection.
-Changes: We can easily change the value by setter injection.
-
-Setter injection:
-@Named
-public class Foo {
-
-    private Bar bar;
-
-    @Inject
-    @Required
-    public void setBar(Bar bar) {
-        this.bar = bar;
-    }
-}
-
-Constructor Injection:
-@Named
-public class Foo {
-
-    private Bar bar;
-
-    @Inject
-    public Foo(Bar bar) {
-        this.bar = bar;
-    }
-}
-
+Bean Factory------ ApplicationContext -----> ClassPAthApp
+                                     |-----> FileSystem
 
 
 Spring guarantees exactly one shared bean instance for the given id per IoC container,
@@ -64,13 +20,28 @@ XML Configuration
 Java Based Configuration @Bean
 Annotation Based Configuration: @Component
 ------------
+Bean properties: class, name, scope, lazy-init, init-method, destroy-method.
+
+Bean property injection:
+    E.g.
+        <bean id="" class= "">
+            <Property name="" value="*.properties" />
+         </bean>
+
+     List:
+        <property name="location">
+            <list>
+                <value>..</>
+                <value>..</>
+            </list>
+
+     Reference:
+        <property name....
+            <ref bean="" />
+            ..
+
+
 Spring Bean Life Cycle
  @PostConstruct, @PreDestroy- annotations for defining post-init and pre-destroy methods.
 
- ----------
 
- Spring MVC is built on top of Model-View-Controller architecture.
- DispatcherServlet is the Front Controller in the Spring MVC application that takes care of
- all the incoming requests and delegate it to different controller handler methods.
-
- -------

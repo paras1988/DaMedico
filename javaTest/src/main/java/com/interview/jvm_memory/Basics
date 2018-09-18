@@ -1,0 +1,14 @@
+PermGEn- contains metadata
+Java8 remove permGen with metaspace.
+Increase by -XX:MaxPermSize=
+
+
+Garbage Collection:
+
+Can't force.
+System.gc() and Runtime.gc() initiates.
+finalize() just before it destroy instance.
+
+Memory management:
+Jprofiler
+VisualVM

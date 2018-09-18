@@ -1,4 +1,4 @@
-package com.interview;
+package com.interview.multiThreading;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
