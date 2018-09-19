@@ -1,0 +1,67 @@
+ void loadMigrationPipeline(){
+        def ObjectMapper mapper = new ObjectMapper();
+        File file = new File(jsonFilePath)
+        Map<Long,Map<Integer,Set<Long>>> map =  mapper.reader(Map.class).with(DeserializationFeature.USE_LONG_FOR_INTS).readValue(file)
+        def Map<Long,LinkedList<DataEntity>> dataEntitiesMap = jsonMapTransformer.transformJsonMap(map)
+        prepareClusterSummaries(dataEntitiesMap)
+    }
+
+    ExecutorService executorService = Executors.newFixedThreadPool(5)
+
+    void prepareClusterSummaries(final Map<Long,LinkedList<DataEntity>> dataEntitiesMap){
+
+        CountDownLatch latch = new CountDownLatch(dataEntitiesMap.size())
+
+        dataEntitiesMap.keySet().stream().forEach(new Consumer<Long>() {
+            @Override
+            void accept(final Long clusterId) {
+                ClusterSummary summary = new ClusterSummary()
+                final LinkedList<DataEntity> clusterDataEntities = dataEntitiesMap.get(clusterId)
+                summary.dataEntities = clusterDataEntities
+                dataEntitiesRepo.put(clusterId,summary)
+                log.info("Added summary for clusterId: {}",clusterId)
+                executorService.submit(new Runnable() {
+                    @Override
+                    void run() {
+                        try {
+                            createIntersection(clusterId,dataEntitiesMap)
+                        } finally {
+                            latch.countDown()
+                        }
+                    }
+                })
+
+            }
+        })
+        latch.await()
+        log.info("Added Summary for all clusters ")
+        executorService.shutdown()
+    }
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ExecutorService executorService = Executors.newFixedThreadPool(4)
+    CountDownLatch latch = new CountDownLatch(targetConnectorInfoList.size())
+    List<Future> resultList = new ArrayList<>();
+    for (RavenConnectorInfo targetConnectorInfo : targetConnectorInfoList) {
+      Future future = executorService.submit(new Runnable() {
+        @Override
+        void run() {
+          try {
+            log.info("QueryTest ",)
+            //assert convertedQueryEqualsTo(sourceConnectorInfo, targetConnectorInfo)
+            if (targetConnectorInfo.getSoftAssert()) {
+              log.info("DataTest ",)
+              assert compareDataSets(sourceConnectorInfo, targetConnectorInfo)
+            }
+          } finally {
+            latch.countDown()
+          }
+        }
+      })
+      resultList.add(future)
+    }
+    latch.await()
+    assert resultList.every { it.isDone() }
+    executorService.shutdown()
