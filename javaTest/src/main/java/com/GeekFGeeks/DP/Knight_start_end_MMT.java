@@ -26,8 +26,7 @@ public class Knight_start_end_MMT {
 			knightPos2[0] = knightPos[0] + a[count];
 			knightPos2[1] = knightPos[1] + b[count];
 
-			int m= n-1;
-			int temp = 1+minStepToReachTarget(knightPos2,targetPos,m);
+			int temp = 1+minStepToReachTarget(knightPos2,targetPos,n-1);
 			if(res == 0){
 				res = temp;
 			}

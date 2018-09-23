@@ -1,4 +1,4 @@
-package com.Threads;
+package com.interview.multiThreading;
 
 public class ProducerConsumerProblem {
 

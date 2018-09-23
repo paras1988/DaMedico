@@ -12,7 +12,7 @@ public class BuildTree {
 		final Integer c = 34;
 
 		final Integer intArray[]={343,67,8734,23,34,23,2,24,22,78};
-		final Comparable compArray[]=intArray;
+		final Integer compArray[]=intArray;
 
 		root= build123(a , b , c);
 
@@ -44,15 +44,14 @@ public class BuildTree {
 
 	}
 
-	public static Node build123Recur( Node rootT,final Comparable []a) {
+	public static Node build123Recur( Node rootT,final Integer []a) {
 
-		for(final Comparable c:a){
+		for(Integer c:a){
 			rootT=recursiveInsert(rootT,c);
 		}
-
 		return rootT;
-
 	}
+
 
 	private static Node insert(final Node rootT, final Comparable a) {
 		if(rootT==null){
@@ -80,18 +79,23 @@ public class BuildTree {
 		}
 	}
 
-	private static Node recursiveInsert(final Node rootT, final Comparable a) {
-		if(rootT==null){
+	private static Node recursiveInsert(Node root, Integer a) {
+		if(root == null){
 			return new Node(a);
 		}
-		else{
-			if(rootT.data.compareTo(a)==-1){
-				rootT.right=recursiveInsert(rootT.right,a);
-			}else{
-				rootT.left=recursiveInsert(rootT.left,a);
+		if(root.getIntVal() > a){
+			if(root.left == null){
+				root.left = new Node(a);
 			}
-			return rootT;
+			recursiveInsert(root.left,a);
 		}
+		if(root.getIntVal() < a){
+			if(root.right == null){
+				root.right = new Node(a);
+			}
+			recursiveInsert(root.right,a);
+		}
+		return root;
 	}
 
 }

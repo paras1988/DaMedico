@@ -1,14 +1,5 @@
 package com.GeekFGeeks.DP;
 
-import static com.GeekFGeeks.DP.MinimumNumberofJumpsToReachEnd.recursiveMinJumps;
-
-/*
- * Input: arr[] = {1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}
-  Output: 3 (1-> 3 -> 8 ->9)
-
-  First element is 1, so can only go to 3. Second element is 3, so can make at most 3 steps eg to 5 or 8 or 9.
-
- * */
 public class MinimumNumberofJumpsToReachEnd2 {
 
 	public static void main(String[] args) {

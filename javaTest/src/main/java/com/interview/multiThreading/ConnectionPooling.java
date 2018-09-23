@@ -1,4 +1,4 @@
-package com.Threads;
+package com.interview.multiThreading;
 
 import java.util.EmptyStackException;
 import java.util.HashMap;

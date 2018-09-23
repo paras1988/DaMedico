@@ -1,8 +1,5 @@
 package com.interview;
 
-/**
- * Java maintains Integer pool from -128 to 127
- */
 public class StringImmutability {
 
   public static void main(String[] args) {

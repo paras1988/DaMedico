@@ -50,7 +50,6 @@ public class RatInAMaze2 {
 					maze[src[0]][src[1]]=0;
 				}
 			}
-
 		}
 		return false;
 	}

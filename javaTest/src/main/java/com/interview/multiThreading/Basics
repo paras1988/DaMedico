@@ -27,5 +27,7 @@ Synchronized Map:
 Just a wrapper on hashmap. to get thread safe map.
 All members are synchronized. get, put, (Think of it why if dont remember)
 ---------------
+Only calling the start() method creates a new execution thread.
 
-
+--------------
+Immutability means thread safe.

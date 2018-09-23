@@ -20,7 +20,6 @@ public class Nqueens {
 				{".",".",".","."}
 		};
 
-
 		solveNQueensUtil(board,0);
 		System.out.println(res);
 		return null;

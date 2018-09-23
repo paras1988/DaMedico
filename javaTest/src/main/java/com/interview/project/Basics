@@ -37,6 +37,9 @@ Post:
 
 Flamingo:
     Have web services, spring boot have UI embedded in Servlet
+    Also have spring Flamingo connectivity with Neo4j OGM
+    Have Beans of TransactionManager using SessionFactory(Take configuration)
+
     Gephi - Data Visualization.
 
     Performance Issue

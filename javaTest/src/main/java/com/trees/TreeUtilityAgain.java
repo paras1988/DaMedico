@@ -61,13 +61,14 @@ public class TreeUtilityAgain {
 		System.out.println(countTreesAgain(5));
 		System.out.println("\n**************************************");
 
-		System.out
-			.println("\n*************getAncestors of Node*************************");
+		System.out.println("\n**********getAncestors of Node********************");
 		printAncestorAgain(root,5);
-		/*root = null;
+		root = null;
 		final Integer intArray4[] = { 8, 4, 2, 6, 1, 3, 5, 7, 12, 10, 14, 9, 11, 13, 15 };
+		System.out.println("\n**********perimeter of tree********************");
+
 		root = BuildTree.build123Recur(root, intArray4);
-		printPerimeter(root);
+		printPerimeterAgain(root);
 		System.out.println("\n*************printPath*************************");
 		root = null;
 		root = BuildTree.build123Recur(root, intArray);
@@ -78,35 +79,56 @@ public class TreeUtilityAgain {
 		Integer intArray5[] = { 10, 5, 1, 50, 40, 100 };
 		root = null;
 		root = BuildTree.build123Recur(root, intArray5);
-		final int count = countBSTSubtreeRange(root, 5, 45);
+		BSTcount = 0;
+		countBSTSubtreeRangeAgain(root, 5, 45);
+		final int count = BSTcount;
 		System.out.println(count);
 
+		BSTcount = 0;
+		countBSTSubtreeRangeAgain(root, 1, 45);
+		final int count2 = BSTcount;
+		System.out.println(count2);
+
+		/**
+		 * Two nodes are cousins of each other if they are at same level
+		 * and have different parents
+		 */
 		System.out
-		.println("\n*************Count BST subtrees that lie in given range*************************");
+		.println("\n*************Check the nodes are cousin*********************");
 		Integer[] intArray6 = {4 , 2, 6, 1, 3, 5, 7};
 		root = null;
 		root = BuildTree.build123Recur(root, intArray6);
-		final boolean isCousin = isCousin(root, 2, 7);
-		final boolean isCousin2 = isCousin(root, 1, 5);
-		final boolean isCousin3 = isCousin(root, 3, 7);
-		final boolean isCousin4 = isCousin(root, 2, 6);
+		final boolean isCousin = isCousinAgain(root, 2, 7);
+		final boolean isCousin2 = isCousinAgain(root, 1, 5);
+		final boolean isCousin3 = isCousinAgain(root, 3, 7);
+		final boolean isCousin4 = isCousinAgain(root, 2, 6);
 		System.out.println(isCousin+" "+isCousin2+" "+isCousin3+" "+isCousin4);
 
 
 
 		System.out
 		.println("\n*********Print a Binary Tree in Vertical and Horizontal Order*************************");
-		printVerticalAndHorizontalNodes(root,5);
+		printVerticalAndHorizontalNodesAgain(root);
 
 		System.out
 		.println("\n*********get LCA by stack*************************");
-		Node res= getLCAByStack(root,5,1);
-		Node res1= getLCAByStack(root,3,1);
-		Node res2= getLCAByStack(root,512,1);
-		Node res3= getLCAByStack(root,7,5);
+		Node res= getLCAByStackAgain(root,5,1);
+		Node res1= getLCAByStackAgain(root,3,1);
+		Node res2= getLCAByStackAgain(root,512,1);
+		Node res3= getLCAByStackAgain(root,7,5);
 		System.out.println(res.data+" "+res1.data+" "+(res2!=null?res2.data:null)+" "+res3.data+" ");
 
 		System.out
+			.println("\n*********get LCA by not stack*************************");
+		Node res4= getLCANotByStack(root,5,1);
+		Node res5= getLCANotByStack(root,3,1);
+		Node res6= getLCANotByStack(root,512,1);
+		Node res7= getLCANotByStack(root,7,5);
+		System.out.println(res4.data+" "+res5.data+" "+(res6!=null?res6.data:null)+" "+res7.data+" ");
+
+
+
+/*		System.out
 		.println("\n*********Print Binary Tree in 2-Dimensions*************************");
 		print2D(root,"  ");
 
@@ -118,16 +140,185 @@ public class TreeUtilityAgain {
 		root = BuildTree.build123Recur(root, intArray7);
 		sinkOddNodes(root);
 		System.out.println();
-
+	*/
+		Integer[] intArray7 ={5,8,2,1,4,9,10};
 		System.out
 		.println("\n*********Print all root to leaf paths*************************");
 		root = null;
 		root = BuildTree.build123Recur(root, intArray7);
-		printAllRootToLeafPaths(root,new int[1000],0);*/
+		printAllRootToLeafPathsAgain(root,new int[1000],0);
+
+		System.out
+			.println("\n*********left view , right view , bottom view , top view paths*************************");
+
+		//Left : 1. Level order,
+		// 			 2. simple recursion when level changes print first
+
+		//Bottom: 1. Level order
+		//				2. Simple recursion update max depth
+
+	}
+
+	private static void printAllRootToLeafPathsAgain(Node root, int[] ints, int i) {
+
+	}
+
+	private static Node getLCANotByStack(Node root, int i, int j) {
+		return null;
+	}
+	private static Node getLCAByStackAgain(Node root, int i, int j) {
+		Stack<Node> stack1 = new Stack();
+		Stack<Node> stack2 = new Stack();
+
+		getAncestors(root,i,stack1);
+		getAncestors(root,j,stack2);
+
+		Node res = null;
+
+		while (!stack1.empty() && !stack2.empty() && stack1.peek() == stack2.peek()){
+			stack1.pop();
+			res = stack2.pop();
+		}
+
+		return res;
+	}
+
+	private static boolean getAncestors(Node root, int i, Stack stack1) {
+		if(root==null){
+			return false;
+		}
+		if(root.getIntVal() == i ||
+			getAncestors(root.left,i,stack1) ||
+			getAncestors(root.right,i,stack1)){
+
+			stack1.push(root);
+			return true;
+		}
+		return false;
+	}
+
+	private static void printVerticalAndHorizontalNodesAgain(Node root) {
+		//computeMinMax
+		//printVertical(root,0);
+		//printHorizontal(root);
+	}
+
+	private static boolean isCousinAgain(Node root, int i, int j) {
+		int h1 = getheight(root,i,0);
+		int h2 = getheight(root,j,0);
+
+		if(h1 != h2){
+			return false;
+		}
+
+		Node root1 = getAncestor(root,i);
+		Node root2 = getAncestor(root,j);
+
+		if(root1.data.compareTo(root2.data) == 0){
+			return false;
+		}
+		return true;
+	}
+
+	private static Node getAncestor(Node root, int i) {
+		if(root==null){
+			return null;
+		}
+		if((root.left!= null && root.left.getIntVal() == i) ||
+			(root.left!= null && root.right.getIntVal() == i)){
+			return root;
+		}
+
+		Node res;
+		res = getAncestor(root.left,i);
+		if(res!=null){
+			return res;
+		}
+		res = getAncestor(root.right,i);
+		if(res!=null){
+			return res;
+		}
+		return null;
+	}
+
+	private static int getheight(Node root, int i, int h) {
+		if(root == null){
+			return -1;
+		}
+		if(root.getIntVal() == i){
+			return h;
+		}
+		int res;
+		res = getheight(root.left,i,h+1);
+		if(res!=-1){
+			return res;
+		}
+		res = getheight(root.right,i,h+1);
+		return res;
+	}
+
+	private static int BSTcount = 0;
+	private static Boolean countBSTSubtreeRangeAgain(Node root, int i, int j) {
+		if(root == null){
+			return true;
+		}
+		boolean left = countBSTSubtreeRangeAgain(root.left,i,j);
+		boolean right = countBSTSubtreeRangeAgain(root.right,i,j);
+
+		if(left && right && root.getIntVal()>=i && root.getIntVal()<=j){
+			BSTcount++;
+			return true;
+		}
+		return false;
+	}
+
+	private static void printPerimeterAgain(Node root) {
+		peripreorder(root);
+		periinorder(root);
+		peripostOrder(root);
+	}
+
+	private static void peripostOrder(Node root) {
+		if(root==null){
+			return;
+		}
+		if(root.right!=null && root.right.right!=null){
+			peripostOrder(root.right);
+			System.out.print(root.right.data+" ");
+		}
+	}
+
+	private static void periinorder(Node root) {
+		if(root == null){
+			return;
+		}
+		periinorder(root.left);
+		if(root.left == null && root.right == null){
+			System.out.print(root.data+" ");
+		}
+		periinorder(root.right);
+	}
+
+	private static void peripreorder(Node root) {
+		if(root==null){
+			return;
+		}
+		if(root.left!=null && root.left.left!=null){
+			System.out.print(root.left.data+" ");
+			peripreorder(root.left);
+		}
 	}
 
 	private static boolean printAncestorAgain(Node root, int i) {
-
+		if(root == null){
+			return false;
+		}
+		if(root.data.compareTo(i)==0 ||
+			printAncestorAgain(root.left,i) ||
+			printAncestorAgain(root.right,i)){
+			System.out.print(root.data);
+			return true;
+		}
 		return false;
 	}
 

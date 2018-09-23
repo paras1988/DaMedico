@@ -10,4 +10,8 @@ public class Node{
 		data=c;
 	}
 
+	int getIntVal(){
+		return (Integer)data;
+	}
+
 }
