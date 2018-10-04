@@ -1,0 +1,10 @@
+ctrl+alt+V 	create local variable refactoring
+sout ctrj+j 	System.out.println(“”)
+ctrl+F12 	show current file structure / outline
+shift+F6 	rename
+ctrl+h 	show the type hierarchy
+ctrl+F3 for searching word
+ctrl + y 	delete current line
+ctrl + shift + f 	search (find in path)
+ctrl + alt + l 	format code
+ctrl + b 	go to declaration (e.g. go to method)

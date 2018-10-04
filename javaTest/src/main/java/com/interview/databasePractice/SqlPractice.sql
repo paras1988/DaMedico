@@ -29,3 +29,31 @@ Department d,
 Employee e
 where d.id=e.dept_id
 group by e.dept_id;
+
+
+--To fetch the first and last name of the customers who placed atleast one order.
+
+SELECT fname, lname
+FROM Customers
+WHERE EXISTS (SELECT *
+              FROM Orders
+              WHERE Customers.customer_id = Orders.c_id);
+
+
+-- Fetch last and first name of the customers who has not placed any order.
+SELECT lname, fname
+FROM Customer
+WHERE NOT EXISTS (SELECT *
+                  FROM Orders
+                  WHERE Customers.customer_id = Orders.c_id);
+
+
+--Delete the record of all the customer from Order Table whose last name is ‘Mehra’.
+
+DELETE
+FROM Orders
+WHERE EXISTS (SELECT *
+              FROM customers
+              WHERE Customers.customer_id = Orders.cid
+              AND Customers.lname = 'Mehra');
+

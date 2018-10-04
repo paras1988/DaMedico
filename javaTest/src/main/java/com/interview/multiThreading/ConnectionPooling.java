@@ -18,14 +18,13 @@ public class ConnectionPooling<E> {
 	public E borrow(){
 		E obj=null;
 		synchronized (this) {
-			if(unusedObjects.isEmpty()){
+			while(unusedObjects.isEmpty()){ 		//while as for spurious wakeups
 				try {
 					System.out.println("Waiting for an Object to be released...");
 					this.wait();
-				} catch (InterruptedException e) {
-				}
+				} catch (InterruptedException e) { }
 
-			}else{
+			}
 				try{
 					String key=unusedObjects.pop();
 					obj= objectPool.get(key);
@@ -33,7 +32,6 @@ public class ConnectionPooling<E> {
 				catch(EmptyStackException e){
 
 				}
-			}
 		}
 		return obj;
 	}
@@ -41,10 +39,8 @@ public class ConnectionPooling<E> {
 	public void returnObject(E obj) {
 		synchronized (this) {
 			if(isValid(obj)){
-				if(unusedObjects.isEmpty()){
 					unusedObjects.add(obj.toString());
 					this.notifyAll();
-				}
 			}
 			else{
 				System.out.println("Please return valid object");

@@ -65,7 +65,7 @@ SPRING REST: (Important . here demonstrate Spring boot and spring rest)
     	}
 }
 
-  @RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
+  @RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET,produces = "application/json"))
   	public @ResponseBody Employee getEmployee(@PathVariable("id") int empId) {
   		logger.info("Start getEmployee. ID="+empId);
 
