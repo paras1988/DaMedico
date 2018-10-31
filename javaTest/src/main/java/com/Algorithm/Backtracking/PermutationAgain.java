@@ -2,8 +2,7 @@ package com.Algorithm.Backtracking;
 
 public class PermutationAgain {
 	public static void main(String[] args) {
-		String str="ABC";
-
+		String str = "ABCD";
 		permuteString(str,0);
 	}
 
@@ -18,7 +17,6 @@ public class PermutationAgain {
 			permuteString(str,c+1);
 			str=swap(str,c,i);
 		}
-
 	}
 
 	private static String swap(String str, int a, int c) {

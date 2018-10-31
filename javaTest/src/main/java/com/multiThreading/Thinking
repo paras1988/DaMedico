@@ -1,0 +1,29 @@
+Sometimes need to break down problem and think -> how should one thread work in existing
+scenario.
+
+Like for printing any series.
+
+---------
+
+Sometimes code is running just because you put it in correct order. change it.
+
+-------
+
+Think in terms of all threads spawned concurrently and calling methods.
+
+
+//basic code:
+synchronized(obj)
+    {
+        while (condition_not_matched)
+        {
+            obj.wait();
+        }
+        //continue
+        dosomething();
+        notify()
+    }
+
+-------------------------
+in class Print_123123123_nThreads
+I was mistaking by not putting obj.wait(). as used synch block.

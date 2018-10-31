@@ -10,7 +10,6 @@ public class StringImmutability {
     System.out.println(s1 == s2); //true
     System.out.println(s1 == s3); //false
 
-
     Integer i1 = 10;
     Integer i2 = 10;
 

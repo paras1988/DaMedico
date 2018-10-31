@@ -1,0 +1,26 @@
+
+
+    Composition over inheritance.
+
+    class Stack extends ArrayList {
+         public void push(Object value) { … }
+         public Object pop() { … }
+     }
+     Here : The public interface of this class is not just push and pop, as one would expect from a class
+     named Stack, it also includes get, set, add, remove, clear,
+     and a bunch of other messages inherited from ArrayList that are inappropriate for a Stack.
+
+     :the statement “a Stack is an ArrayList” is not true; Stack is not a proper subtype of ArrayList.
+     :implementing a Stack by inheriting from ArrayList is a cross-domain relationship: ArrayList is a
+      randomly-accessible Collection; Stack is a queuing concept, with specifically restricted (non-random) access
+     :Domain classes should use implementation classes, not inherit from them.
+        Example : ConsumerGroup extend ArrayList<Consumer> --> Wrong
+
+
+
+    Inheritance should only be used when:
+
+        Both classes are in the same logical domain
+        The subclass is a proper subtype of the superclass
+        The superclass’s implementation is necessary or appropriate for the subclass
+        The enhancements made by the subclass are primarily additive.

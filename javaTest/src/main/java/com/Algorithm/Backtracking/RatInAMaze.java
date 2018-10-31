@@ -4,8 +4,8 @@ public class RatInAMaze {
 
 	public static void main(String[] args) {
 		int maze[][]  =  
-			  { {1, 0, 0, 0},
-				{1, 1, 0, 1},
+			{ {1, 0, 0, 0},
+				{1, 1, 1, 1},
 				{0, 1, 0, 0},
 				{1, 1, 1, 1}
 		};
@@ -28,7 +28,7 @@ public class RatInAMaze {
 		}
 	}
 
-	private static void printMaze(int[][] maze) {
+	static void printMaze(int[][] maze) {
 		for(int i=0;i<N;i++) {
 			for(int j=0;j<N;j++) {
 				System.out.print(maze[i][j]);
