@@ -1,4 +1,4 @@
-package com.JavaQues;
+package com.interview.famousProblems;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,6 @@ public class MaxSumContiguousSubarray {
 		int res=maxSubArray(arrL);
 
 		System.out.println(res);
-
 	}
 
 	public static int maxSubArray(final List<Integer> a) {

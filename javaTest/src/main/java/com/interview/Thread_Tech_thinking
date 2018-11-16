@@ -27,3 +27,7 @@ synchronized(obj)
 -------------------------
 in class Print_123123123_nThreads
 I was mistaking by not putting obj.wait(). as used synch block.
+
+
+Links:
+https://dzone.com/articles/threads-top-80-interview

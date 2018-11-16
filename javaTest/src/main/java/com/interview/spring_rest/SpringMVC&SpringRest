@@ -88,3 +88,51 @@ SPRING REST: (Important . here demonstrate Spring boot and spring rest)
 
 -----------------------------
 
+@Qualifier vs @Autowire
+
+@Component(value="car")
+public class Car implements Vehicle {
+
+     @Override
+     public void start() {
+           System.out.println("Car started");
+     }
+
+     @Override
+     public void stop() {
+           System.out.println("Car stopped");
+     }
+ }
+
+@Component(value="bike")
+public class Bike implements Vehicle {
+
+     @Override
+     public void start() {
+          System.out.println("Bike started");
+     }
+
+     @Override
+     public void stop() {
+          System.out.println("Bike stopped");
+     }
+}
+
+@Component
+public class VehicleService {
+
+    @Autowired
+    @Qualifier("bike")
+    private Vehicle vehicle;
+
+    public void service() {
+         vehicle.start();
+         vehicle.stop();
+    }
+}
+
+Injecting Bike bean in VehicleService using @Autowired with @Qualifier annotation.
+If you didn't use @Qualifier, it will throw NoUniqueBeanDefinitionException.
+
+-----------------------------------------------
+

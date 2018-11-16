@@ -47,6 +47,10 @@ WHERE NOT EXISTS (SELECT *
                   FROM Orders
                   WHERE Customers.customer_id = Orders.c_id);
 
+ALSO:
+SELECT lname, fname
+FROM Customer left join Orders on Customers.customer_id = Orders.c_id where Orders.c_id = null;
+
 
 --Delete the record of all the customer from Order Table whose last name is ‘Mehra’.
 
@@ -57,3 +61,13 @@ WHERE EXISTS (SELECT *
               WHERE Customers.customer_id = Orders.cid
               AND Customers.lname = 'Mehra');
 
+--second highest
+SELECT name, MAX(salary) AS salary
+  FROM employee
+ WHERE salary < (SELECT MAX(salary)
+                 FROM employee);
+
+Select name,salary from employee A where n-1 = (Select count(1) from employee B where B.salary>A.salary)
+
+If you have an index on (ColumnA, ColumnB) a query on only ColumnA or ColumnA and
+ColumnB together can use the index, but a query on only ColumnB cannot.

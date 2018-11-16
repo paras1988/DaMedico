@@ -31,3 +31,9 @@ Only calling the start() method creates a new execution thread.
 
 --------------
 Immutability means thread safe.
+-----------
+
+Sample:
+https://bmwieczorek.wordpress.com/2015/11/05/difference-between-cachedthreadpool-vs-fixedthreadpool-visualized-in-jvisualmvm/
+
+https://codepumpkin.com/countdownlatch-vs-cyclicbarrier/
