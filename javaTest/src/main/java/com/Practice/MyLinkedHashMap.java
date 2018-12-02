@@ -1,5 +1,7 @@
 package com.Practice;
 
-public class MyLinkedHashMap {
+public class MyLinkedHashMap<K,V> {
 
+
+  E
 }
