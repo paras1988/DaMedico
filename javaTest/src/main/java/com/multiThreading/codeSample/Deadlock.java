@@ -16,17 +16,18 @@ public class Deadlock {
       public void run() {
         synchronized (object1){
           try {
+              System.out.print("object1 thread1");
             sleep(500);
           } catch (InterruptedException e) {
             e.printStackTrace();
           }
-          /*try {
+          try {
             object1.wait();
           } catch (InterruptedException e) {
             e.printStackTrace();
-          }*/
+          }
           synchronized (object2){
-            System.out.print("thread1");
+            System.out.print("object2 thread1");
           }
         }
       }
@@ -38,13 +39,14 @@ public class Deadlock {
       public void run() {
         synchronized (object2){
           try {
+              System.out.print("object2 thread2");
             sleep(500);
           } catch (InterruptedException e) {
             e.printStackTrace();
           }
           synchronized (object1){
-            System.out.print("thread2");
-            /*object1.notify();*/
+            System.out.print("object1 thread2");
+            object1.notify();
           }
         }
       }

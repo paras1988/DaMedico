@@ -1,0 +1,15 @@
+https://data-flair.training/blogs/hive-partitioning-vs-bucketing/
+
+Execution:
+
+Few internals:
+
+Hive
+driver compiler metadata execution engine.
+
+above will send plan to Hadoop
+Hadoop
+job_tracker  task_trackers(Map)  task_trackers(Reduce) HDFS::  Namenode datanodes
+
+https://www.geeksforgeeks.org/architecture-and-working-of-hive/
+

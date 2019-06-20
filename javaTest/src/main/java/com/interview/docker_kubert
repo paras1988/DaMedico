@@ -1,0 +1,31 @@
+ a system administrator can work with containers, which are a kind of isolated partition inside a single operating system. Containers provide many of the same benefits as virtual machines, such as security, storage, and network isolation, while requiring far fewer hardware resources and being quicker to launch and terminate. They also isolate the libraries and the runtime environment (such as CPU and storage) used by an application to minimize the impact of any OS update to the host OS, as described in the previous diagram.
+
+ major container providers is Docker.
+
+ ontainers boost the microservices development approach because they provide a lightweight and reliable environment to create and run services that can be deployed to a production or development environment without the complexity of a multiple machine environment.
+
+ Container are segragated space environment for running our application.
+ These are primary objects in docker. Images are template/definition for container.e.g By 1 image can create 5,10 containers
+ Images are in registry like dockerhub, redhat also have own registry.
+  Each container is added to a specific set of namespaces, which are only used by that container.
+
+ After this we have containers running app, but what happen when it fails. there comes kubernetes:
+	1. It spawn another container if some fails.
+	2. It can be used for scaling.
+	3. If new container spawned , its IP changes so kubernetes maintain it.
+
+	pods are primary objects in kubernetes . Represent a collection of containers that share resources E.g multiple Front end containers into a single pod
+	Services are used by kubernetes to persist IP address so that pods can communicate with each other
+	we would do is we could create a service object for each of these pods,
+and that would allow us to consistently interact with each other.
+
+	A replication controller will ensure that we always have a minimum number that you set of pods.
+	Persistent volumes and persistent volume claims are used for us to persist datadespite any sort of container failure, or if we just bring the containers down,
+
+	Openshift build on both docker and kubernetes . Openshift provide good features to maintain these.
+	Like webconsole on top of kubernetes by which we can scale out pods easily, mange role based access
+
+	OPenshift can run on any cloud of ur choice , host on premise.
+	OpenShift routes are a specific resource just to OpenShift that build on top of Kubernetes. And that allows you to expose those services. So I talked earlier about how services, make them public etc.
+
+	Lot of openshift run on containers itself . like authorization, networking, image registry. we can scale as per our need.

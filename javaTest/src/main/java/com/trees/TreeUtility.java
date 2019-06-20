@@ -55,8 +55,9 @@ public class TreeUtility {
 		root2 = BuildTree.build123Recur(root2, intArray3);
 		final Boolean check = sameTree(root, root2);
 		System.out.println("sameTree " + check);
-		System.out.println("\n**************************************");
-		System.out.println(countTrees(5));
+		System.out.println("\n****************countTrees**********************");
+		System.out.println(countTrees(2)+" "+countTrees(3)+" "+countTrees(4)+" "+countTrees(5));
+
 		System.out.println("\n**************************************");
 		root = null;
 		final Integer intArray4[] = { 8, 4, 2, 6, 1, 3, 5, 7, 12, 10, 14, 9, 11, 13, 15 };
@@ -121,13 +122,26 @@ public class TreeUtility {
 		root = BuildTree.build123Recur(root, intArray7);
 		printAllRootToLeafPaths(root,new int[1000],0);
 
-		//left view
+		final Integer intArray8[] = { 8, 4, 2, 6, 1, 3, 5, 7, 12, 10, 14, 9, 11, 13, 15 };
+		root = BuildTree.build123Recur(root, intArray8);
+		System.out
+				.println("\n*********Print left view*************************");
+		printLeftView(root);
 		//right view
 		//bottom view
 		//upper view
 		//perimeter
 	}
 
+	private static void printLeftView(Node root) {
+		if(root.left != null){
+			System.out.print(root.data+" ");
+			printLeftView(root.left);
+		}
+		else if(root.right != null){
+			printLeftView(root.right);
+		}
+	}
 
 	private static void printAllRootToLeafPaths(Node root,int[] path,int i) {
 		if(root==null){
@@ -571,17 +585,19 @@ public class TreeUtility {
 		}
 
 		if (numKeys == 1) {
-			return 0;
+			return 1;
 		}
+/*
 
 		if (numKeys == 2) {
 			return 2;
 		}
+*/
 
-		if (numKeys == 3) {
+		/*if (numKeys == 3) {
 			return 5;
 		}
-
+*/
 		int sum = 0;
 
 		for (int i = 1; i <= numKeys; i++) {

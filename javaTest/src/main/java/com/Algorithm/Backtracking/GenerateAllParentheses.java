@@ -1,17 +1,11 @@
 package com.Algorithm.Backtracking;
 
-import java.util.ArrayList;
-
 public class GenerateAllParentheses {
 
 	public static void main(String[] args) {
-		ArrayList<String> a=new ArrayList<String>();
-		new GenerateAllParentheses().generateParenthesisUtil(0,0,"",0,3);
-	}
+		new GenerateAllParentheses(
 
-	public ArrayList<String> generateParenthesis(int a) {
-
-		return null;
+		).generateParenthesisUtil(0,0,"",0,3);
 	}
 
 	public void generateParenthesisUtil(int left,int right,String str,int index,int N) {
@@ -34,12 +28,14 @@ public class GenerateAllParentheses {
 
 		str +="(";
 		left++;
+		System.out.println("LEFT "+left+"-"+right+"-"+str);
 		generateParenthesisUtil(left,right,str,index+1,N);
 		str=str.substring(0, str.length()-1);
 		left--;
 
 		str+=")";
 		right++;
+		System.out.println("RIGHT "+left+"-"+right+"-"+str);
 		generateParenthesisUtil(left,right,str, index+1,N);
 		str=str.substring(0, str.length()-1);
 		right--;

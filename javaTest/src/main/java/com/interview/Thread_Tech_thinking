@@ -11,11 +11,10 @@ Sometimes code is running just because you put it in correct order. change it.
 
 Think in terms of all threads spawned concurrently and calling methods.
 
-
 //basic code:
 synchronized(obj)
     {
-        while (condition_not_matched)
+        while (condition_matched)
         {
             obj.wait();
         }
@@ -24,10 +23,25 @@ synchronized(obj)
         notify()
     }
 
+     while (!transfer) {
+                    wait();
+            }
+            transfer = false;
+
+            this.packet = packet;
+            notifyAll();
+
 -------------------------
 in class Print_123123123_nThreads
 I was mistaking by not putting obj.wait(). as used synch block.
 
+when series use if instead of while
+
 
 Links:
 https://dzone.com/articles/threads-top-80-interview
+
+when we call wait() – this forces the current thread to wait until some other thread invokes notify() or notifyAll() on the same object.
+For this, the current thread must own the object's monitor.
+
+notify work only on threads who are waiting.

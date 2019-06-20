@@ -69,5 +69,17 @@ SELECT name, MAX(salary) AS salary
 
 Select name,salary from employee A where n-1 = (Select count(1) from employee B where B.salary>A.salary)
 
+
+--Find the employees who are managers:
+SELECT DISTINCT e.emp_id AS 'mng_id', e.emp_name AS 'mng_name'
+FROM employees e, employees m WHERE e.emp_id = m.mng_id
+
+--https://bikashshaw.wordpress.com/2014/02/10/employee-id-employee-name-and-manager-id-self-join-sql-query-as-interview-question/
+
 If you have an index on (ColumnA, ColumnB) a query on only ColumnA or ColumnA and
 ColumnB together can use the index, but a query on only ColumnB cannot.
+
+
+https://www.byteslounge.com/tutorials/spring-transaction-isolation-tutorial
+
+https://skillachie.com/2014/07/25/mysql-high-availability-architectures/#more-1192

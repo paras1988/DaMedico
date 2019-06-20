@@ -1,7 +1,6 @@
 DataStructure: List , Tree , Map, Hashmap, Array
 Ways
 
-
 Backtracking:
   choose
   Explore
@@ -34,3 +33,22 @@ Otherwise calculate the result and remember it.
 4. Analyze the space and time requirements, and improve it if possible.
 
     And voila, we have a DP solution ready.
+
+
+Tree Problems:
+
+Most of the binary tree problems can be solved in four steps(Split and Combine):
+1. Work on the current(root) node, also called as base case.
+2. Process the left sub-tree recursively.
+3. Process the right sub-tree recursively.
+4. Combine/Merge/choose the results from left sub-tree and right sub-tree
+
+
+Array:
+
+RainWater Taping Problems-- take min/max from left , min/max from right ,
+    take min/max operate
+
+Same array operation no mem- 1 to N ... go to the index the number is , do manipulate
+
+

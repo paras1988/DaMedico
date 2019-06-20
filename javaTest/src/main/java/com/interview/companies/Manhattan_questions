@@ -1,0 +1,25 @@
+1. Given List<List<int> each list is connected with one another.
+elements are 1-100
+1-2-4-6
+2-5-23-45
+4-42-54-66
+
+check whether 23 and 54 connected: yes as 23->2->4->54...
+
+Use Recursive Programming
+
+2. Deadlock design
+
+3. BMS design database and how it handles concurrent req.
+
+ locking and row versioning behavior of Transact-SQL
+ @Transactional(isolation=Isolation.SERIALIZABLE)
+
+https://www.byteslounge.com/tutorials/spring-transaction-isolation-tutorial
+
+4. Strategy pattern
+
+5. Hibernate
+    PersistenceContext and its use
+    get vs load vs merge
+    ManyToMany

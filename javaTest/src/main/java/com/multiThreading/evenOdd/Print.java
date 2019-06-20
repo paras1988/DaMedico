@@ -1,6 +1,6 @@
 package com.multiThreading.evenOdd;
 
-/** see execution plan of wait and notify
+/**see execution plan of wait and notify
  *
  */
 class Print{

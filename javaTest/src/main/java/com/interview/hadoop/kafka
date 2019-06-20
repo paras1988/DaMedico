@@ -1,0 +1,21 @@
+Kafka product is based on a distributed design where one cluster has multiple brokers/servers
+ associated with it. The ‘Topic’ will be divided into plenty of partitions to store the messages and
+there is one consumer group to fetch the messages from brokers.
+
+while paritiions speed up the processing at consumer side, it violates message ordering guarantees.
+Hence partitions should only be used when there is no requirement of processing
+
+https://stackoverflow.com/questions/48247478/real-world-use-cases-where-apache-kafka-is-used
+https://www.confluent.io/blog/publishing-apache-kafka-new-york-times/
+https://medium.com/@Pinterest_Engineering/using-kafka-streams-api-for-predictive-budgeting-9f58d206c996
+
+
+https://www.oreilly.com/library/view/kafka-the-definitive/9781491936153/ch04.html
+1 topic - n  partitions - m consumers (in one group)
+1 partition -> 1 consumer  if any consumer fails other consumer takes that partition.
+1 consumer can read from multiple partitions
+
+If all consumers use the same group id, messages in a topic are distributed among those consumers.
+In other words, each consumer will get a non-overlapping subset of the messages. Having more consumers in the same group increases the
+degree of parallelism and the overall throughput of consumption.
+On the other hand, if each consumer is in its own group, each consumer will get a full copy of all messages.

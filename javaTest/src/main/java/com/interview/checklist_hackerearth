@@ -1,0 +1,12 @@
+1. mod with 10^9+7 - use long in result and do mod.
+2. Zeroes
+3. Boundaries
+4. check for data Types like use of long in between
+
+IF wrong ansswer is coming understanding of problem is not right. And they didnt mention that
+in test case.
+
+check error vs timeouts
+
+error: indexoutofbound, stackoverflow
+

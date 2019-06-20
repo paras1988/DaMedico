@@ -57,8 +57,8 @@ public class TreeUtilityAgain {
 		root2 = BuildTree.build123Recur(root2, intArray3);
 		final Boolean check = sameTreeAgain(root, root2);
 		System.out.println("sameTree " + check);
-		System.out.println("\n**************************************");
-		System.out.println(countTreesAgain(5));
+		System.out.println("\n****************countTreesAgain**********************");
+		System.out.println(countTreesAgain(2)+" "+countTreesAgain(3)+" "+countTreesAgain(4)+" "+countTreesAgain(5));
 		System.out.println("\n**************************************");
 
 		System.out.println("\n**********getAncestors of Node********************");
@@ -323,10 +323,17 @@ public class TreeUtilityAgain {
 	}
 
 	private static int countTreesAgain(int count) {
-		/*for(int i=count;i>0;i--){
-`
-		}*/
-		return 0;
+		int total = 0;
+		if(count == 0){
+			return 0;
+		}
+		if(count == 1){
+			return 1;
+		}
+		for(int i=1;i<=count;i++){
+			total += countTreesAgain(i-1)+countTreesAgain(count-i);
+		}
+		return total;
 	}
 
 	private static Boolean sameTreeAgain(Node root1, Node root2) {

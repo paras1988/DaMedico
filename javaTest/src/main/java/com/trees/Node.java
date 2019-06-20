@@ -2,15 +2,15 @@ package com.trees;
 
 public class Node{
 
-	Comparable data;
-	Node left=null;
-	Node right=null;
+	public Comparable data;
+	public Node left=null;
+	public Node right=null;
 
 	Node(final Comparable c){
 		data=c;
 	}
 
-	int getIntVal(){
+	public int getIntVal(){
 		return (Integer)data;
 	}
 

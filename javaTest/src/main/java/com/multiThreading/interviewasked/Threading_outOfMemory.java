@@ -2,7 +2,11 @@ package com.multiThreading.interviewasked;
 
 /**
  * If one thread throw OOM exception then GC occurs and stops other threads for a while
- * so other threads will start working.
+ * so other threads will start working and that one thread exits, while other will start
+ *
+ * eventually in this program at end all threads will terminate
+ *
+ * OOM: it occurs when sufficient space is not there for allocation to new data structure.(say array)
  *
  */
 public class Threading_outOfMemory {

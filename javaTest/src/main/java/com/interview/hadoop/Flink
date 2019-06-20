@@ -1,0 +1,40 @@
+dataset Transformation:
+
+ map flatmap groupby sum filter
+
+------------------
+ datastream Transformation:
+
+ map flatmap keyby( keyby is like groupby in dataset)sum filter
+datasource = addsource
+operation: map reduce fold
+aggregation: min max avg sum
+split -
+
+
+Window : tumblin sliding session global
+
+flow: window created -> Trigger -> window function
+
+Evictor - remove element .can be called anywhere.
+
+Watermark - mechanism to measure progress
+
+
+state and checkpoint - fault tolerance
+
+valuestate - convert stateless to stateful
+
+broadcast state - like distributed cache
+
+-------------
+
+
+FLINK vs SPARK:
+https://www.quora.com/Will-Apache-Flink-overtake-Apache-Spark-Is-Flink-faster-and-better-than-Spark
+https://mapr.com/blog/apache-spark-vs-apache-flink-whiteboard-walkthrough/
+
+Flink: continous data operator(map, key..) based model.
+It used controlled cyclic dependency graph
+Spark: micro batching
+

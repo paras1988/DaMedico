@@ -1,66 +1,45 @@
 package com.JavaQues;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+public class Test {
 
+	public static void main(String[] args) {
 
-import java.util.ArrayList;
-import java.util.List;
+		int count = 20;
+		while (true){
+            int[] memoryFillIntVar = new int[count];
+            count = count*5;
+            System.out.println(count);
+		}
 
-class Test
-{
-	public static void main(String[] args) throws Exception
-	{
-		List<String> str = new ArrayList<>();
-		str.add("cdab");
-		str.add("dcba");
-		str.add("abcd");
-		str.add("a");
-		str.add("");
-
-		List<String> str1 = new ArrayList<>();
-		str1.add("abcd");
-		str1.add("abcd");
-		str1.add("abcdcd");
-		str1.add("a");
-		str1.add("");
-
-		List<String> res = twins(str,str1);
-		System.out.println(res);
 	}
 
-	public static List<String> twins(List<String> a, List<String> b) {
-		List<String> result = new ArrayList<>();
-		for(int i=0;i<a.size();i++){
-			if(a.get(i).length() != b.get(i).length()){
-				result.add("No");
-				continue;
-			}
-			if(checkStr(a.get(i),b.get(i))){
-				result.add("Yes");
-			}
-			else {
-				result.add("No");
-			}
+	public static Date getDate(String date, String dateFormat) {
+		SimpleDateFormat fmt = new SimpleDateFormat(dateFormat);
+		try {
+			return fmt.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return result;
+		return null;
 	}
 
-	private static boolean checkStr(String str1,String str2) {
-
-		int xor = 0;
-		for(int i=0;i<str1.length();i=i+2){
-			xor = xor ^ str1.charAt(i);
-			xor = xor ^ str2.charAt(i);
-		}
-		if(xor != 0){
-			return false;
-		}
-		xor = 0;
-		for(int i=1;i<str1.length();i=i+2){
-			xor = xor ^ str1.charAt(i);
-			xor = xor ^ str2.charAt(i);
-		}
-		if(xor != 0){
-			return false;
-		}
-		return true;
-	}
+    public void generateOOM() throws Exception {
+        int count = 20;
+        System.out.println("\n=================> OOM test started..\n");
+        for (int outerIterator = 1; outerIterator < 20; outerIterator++) {
+            System.out.println("Iteration " + outerIterator + " Free Mem: " + Runtime.getRuntime().freeMemory());
+            int loop1 = 2;
+            int[] memoryFillIntVar = new int[count];
+            do {
+                memoryFillIntVar[loop1] = 0;
+                loop1--;
+            } while (loop1 > 0);
+            count = count * 5;
+            System.out.println("\nRequired Memory for next loop: " + count);
+            Thread.sleep(1000);
+        }
+    }
 }

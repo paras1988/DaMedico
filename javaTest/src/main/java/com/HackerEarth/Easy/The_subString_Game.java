@@ -4,14 +4,20 @@ package com.HackerEarth.Easy;
 The Substring Game!
 Let's play the Substring Game.
 
-This game has two characters: Sherlock and Watson. As usual, Watson wants to test the skills of Mr. Sherlock.
+This game has two characters: Sherlock and Watson. As usual, Watson wants to test the
+skills of Mr. Sherlock.
 
-Watson gives Sherlock a string (let's denote it by S). Watson calculates all the substrings of S in his favourite order.
+Watson gives Sherlock a string (let's denote it by S). Watson calculates all the substrings
+of S in his favourite order.
 
-According to the Watson's favourite order, all the substrings starting from first character of the string will occur first in the sorted order of their length, followed by all the substrings starting from the second character of the string in the sorted order of their length, and so on.
+According to the Watson's favourite order, all the substrings starting from first character
+of the string will occur first in the sorted order of their length, followed by all the
+substrings starting from the second character of the string in the sorted order of their
+length, and so on.
 
 For example:
-Suppose the given string is "abc" that is S = abc. Then, all the substrings of S as per Watson's favourite order are:
+Suppose the given string is "abc" that is S = abc. Then, all the substrings of S as per
+Watson's favourite order are:
 
 1) a
 

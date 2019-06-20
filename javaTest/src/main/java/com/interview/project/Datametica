@@ -1,10 +1,9 @@
-Import logs from Tables
+Import logs from Tables:
 
-Avro file writer ->
-    Need avsc
-    Need Query of selecting data
-    Need parameters where query get fired.
-    Store output avros to target hdfs
+Use sqoop : RDBMS to HDFS in avro format.
+Now we have avro data and avsc files (created before hand) , by avroserde we generate hive
+external tables(new hdfs location) on it. E.g join dbqlogtbl_hst and dbqlsqltbl_hst to generate
+query_log_e.
 
 From avros create Logs and metadata dictionary for lookup.
 On fly lookups for drop create distributed cache
