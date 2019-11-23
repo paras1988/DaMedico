@@ -1,23 +1,23 @@
-Event tracking System (ETS) is a process which capturer all usage events of customers on creative cloud platform.
-These events data are collected and analysed by different group in Adobe to get better insight of customer usage pattern.
-Like Advertisement and marketing team use this data to drive their campaign to target users.
+Event tracking System (ETS) capturer all events of customers on cloud .
+These events data are collected and analysed by different group in Adobe for customer usage pattern.
 
 Event logs are captured and stored in AWS redshift. A batch pipeline imports data from Redshift to S3 and then to HDFS
 (In premises Hadoop cluster).
-Data ingestion frequency is very high in redshift which was leading to latency issues. Because of these issues pipelines started
-failing most of the times and business was getting impacted with loss.
-A new solution is to covert this batch running pipeline into a real time streaming pipeline and ingests data in real time.
-In new streaming pipeline AWS Kinesis connectors are publishing events data directly into Kafka topic. A spark streaming application
+Data ingestion frequency is very high in redshift which lead latency issues. Because of these issues pipelines started
+failing mostly
+solution covert batch running pipeline into a real time streaming pipeline and ingests data in real time.
+Now AWS Kinesis connectors are publishing events data directly into Kafka topic. A spark streaming application
 consume data from ETS topic at a batch interval of 10 sec. Each batch of streams are consuming around 50k records from 10 partitions
-of the topic. Next streaming application will filter each event on the basis of event codes (like search activity event,
-user registered, unverified user added, unverified user converted etc) and produce filtered event to event specific Kafka topics.
+of the topic. Next streaming application will filter each event on the basis of event codes and produce filtered event to event
+specific Kafka topics.
 Further confluent hdfs sink connector running in distributed mode will consume and write into hive tables from each event topics.
 
 ---------------
-I am a part of RADA (Reporting And Data Analytic) team and our teams responsibility is to write sqoop script jobs to import data from
+write sqoop script jobs to import data from
 different sources like DB2,SqlServer, Mysql, Sybase , TeraData to HDFS or Hive Tables.
-Created an application (Load Validation) which monitor and notify the end users with the data quality of the sqoop jobs .
-Load validation application checks the source and destination record count of sqoop imported data , Column counts , Size etc . Base on calculated metrics it validates the quality of the imported data.
+application (Load Validation) which monitor and notify the end users with the data quality of the sqoop jobs .
+Load validation application checks the source and destination record count of sqoop imported data , Column counts , Size etc .
+Base on calculated metrics it validates the quality of the imported data.
 
 • Created Test plans for validating output of applications in Hadoop.
 • Created Sqoop Jobs to import data from SQL Server,DB2 and Teradata Databases to hive tables.
@@ -33,23 +33,22 @@ https://www.ericsson.com/en/blog/2015/7/apache-storm-vs-spark-streaming
 
 --------------------
 
+      Tweets ->  flume
 
 Use Case Implementation:
 We set up a flume sink of a Kafka Topic ‘tweets’ partitioned across two brokers. ‘Tweets’ has only one partition.
 
-A Java consumer, Consumer0 connects to the topic ‘tweets’ and another consumer from the console belonging to the same groupid as the
-previous one. The first has the group id ‘group1’. The kafka consumer from console has the group id ‘console’.
-We then added two consumers to the consumer group ‘group1’. As it’s only one partition, we see that of the three consumers in the group,
-only one consumer, Consumer2 continues pulling messages for the group.
+A Java consumer, Consumer0 grp_id 'grp1' and console consumer group id ‘grp2’ connects to the topic ‘tweets’.
+added 2 consumers to the consumer group ‘grp1’. As one partition, we see that
+only one consumer from ‘grp1’ continues pulling messages for the group.
 
-The consumer for group2 is then started and connected to same topic ‘tweets’. Both consumers read at the same pace of offsets.
-When Consumer2 from group1 is switched off, We see after some time has elapsed (session timeout) Consumer1 from group one picks up
-from the last offset Consumer2 closed on. Consumer0 remains stalled at the offset it stopped at.
+The consumer for 'grp2' is then started and connected to same topic ‘tweets’. Both consumers read at the same pace of offsets.
+one cosumer from 'grp1' get off . another consumer start reading from same offset where it get off.
 This shows rebalancing occuring due to the loss of a consumer form the group.
 The console consumer however remains unaffected in consumption of messages.
 
-In the case of multiple partitions of a topic we can see that as many consumers belonging to the same group will process the
-messages off the topic, as per the partition assigned on start up. The messages are guaranteed ordering only within a partition
+In the case of multiple partitions of a topic as many consumers belonging to the same group will process the
+messages off the topic, as per the partition assigned. The messages are guaranteed ordering only within a partition
 and not between the brokers. When a consumer fails in this scenario, the partition it was reading from is reassigned during the
 rebalance phase initiated at session timeout.
 

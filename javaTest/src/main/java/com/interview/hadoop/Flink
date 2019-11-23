@@ -38,3 +38,21 @@ Flink: continous data operator(map, key..) based model.
 It used controlled cyclic dependency graph
 Spark: micro batching
 
+
+Project:
+
+Recon job.
+assignWaterMark as needing time based computation
+Created Coprocess function for request and response
+keyby batch identifier- create logical partition internally
+
+coprocess class -
+ProcessElement1 and processEment2
+ProcessElement1- put count in value state and register timer half and full in context
+processElement2 - put it in map
+
+on Timer - it run for the time registered. (here half and full time)
+It run and check in map about the records in map.. and do stuff like putting in db,
+sending email.
+
+

@@ -1,5 +1,16 @@
 https://data-flair.training/blogs/hive-partitioning-vs-bucketing/
 
+CREATE TABLE table_name (column1 data_type, column2 data_type) PARTITIONED BY (partition1 data_type, partition2 data_type,….);
+
+CREATE TABLE table_name PARTITIONED BY (partition1 data_type, partition2 data_type,….) CLUSTERED BY (column_name1, column_name2, …)
+ SORTED BY (column_name [ASC|DESC], …)] INTO num_buckets BUCKETS;
+
+
+Dept: A B C -- 3 partition of each dept
+
+B can have n no. of buckets.
+
+
 Execution:
 
 Few internals:
@@ -13,3 +24,12 @@ job_tracker  task_trackers(Map)  task_trackers(Reduce) HDFS::  Namenode datanode
 
 https://www.geeksforgeeks.org/architecture-and-working-of-hive/
 
+
+hive optimization:
+
+tez engine
+bucketing
+partitioning
+De-normalizing data
+Compress map/reduce output:
+ORC format - columnar for analytics..

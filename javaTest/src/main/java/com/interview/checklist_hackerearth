@@ -10,3 +10,39 @@ check error vs timeouts
 
 error: indexoutofbound, stackoverflow
 
+S. No.	Error	Description	Reason
+1	SIGSEGV	Segmentation fault error	Caused by an out-of-scope array index causing a buffer overflow, an incorrectly initialized pointer, etc.
+
+Signal is generated when a program tries to read or write outside the memory that is allocated for it, or to write memory that can only be read.
+
+For example, you are accessing a[-1] in a language which does not support negative indices for an array.
+2	SIGXFSZ	Output limit exceeded error	Your program has printed too much data to output.
+3	SIGFPE	Floating point error	This usually occurs when you're trying to divide a number by 0, or trying to take the square root of a negative number.
+4	SIGABRT	Raised by the program	This happens when the judge aborts your program in the middle of execution.
+
+This can also be raised due to insufficient memory.
+5	NZEC	Non-zero exit code error	This message means that the program exited to the shell by returning a value that is different from 0.
+
+For languages such as C/C++, this probably means you forgot to add "return 0" at the end of the program.
+
+It could happen if your program threw an exception which was not caught. Trying to allocate too much memory in a vector.
+
+For interpreted languages like Python, NZEC will usually mean that your program either crashed or raised an uncaught exception.
+
+Some of the reasons being in such cases would be: the runtime errors mentioned above. Or, for instance usage of an external library which is causing some error, or not being used by the judge.
+6	MLE	Memory limit exceeded error	This error means that your program tried to allocate memory beyond the memory limit indicated.
+
+This can occur if you declare a very large array, or if a data structure in your program becomes too large.
+7	OTHER	Generated when you use too much memory	Check for arrays that are too large, or other elements that could grow to a size too large to fit in memory.
+==============
+Sometimes it can also be generated for reasons similar to the SIGSEGV error.
+Avoiding runtime errors
+
+Ensure that you are not using variables that haven't been initialized. These may be set to 0 on your computer, but aren't guaranteed to be on the judge.
+
+Check every single occurrence of accessing an array element and see if it could possibly be out of bounds.
+
+Ensure that you are not declaring too much memory. 64 MB is guaranteed, but having an array of size [100000][100000] will never work.
+
+Ensure that you are not declaring too much stack memory. Any large arrays should be declared globally, outside of any functions -
+putting an array of 100000 ints inside a function probably will not work.

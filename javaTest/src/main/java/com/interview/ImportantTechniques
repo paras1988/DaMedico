@@ -47,8 +47,39 @@ Most of the binary tree problems can be solved in four steps(Split and Combine):
 Array:
 
 RainWater Taping Problems-- take min/max from left , min/max from right ,
-    take min/max operate
+    take min/max operate .. e.g. maxUnsortArray.
 
-Same array operation no mem- 1 to N ... go to the index the number is , do manipulate
+    Think if array is sorted then what to do, try to reach to that stage. example MaxDistance in bucketing
+
+
+Same array operation no mem- 1 to N ... go to the index the number is , do manipulate(like
+change to -1 , swap )
+
+Think of tradeoff situations
+
+Break problem into possibilities like overlap and non-overlap
+
+In Arrangements like reverse swap for K break the array.
+
+Try to get see pattern with less swaps needing.
+
+Also check when said Integer it can be negative , zeroes.
+
+Check edge cases when numbers : duplicates, negatives , zeroes
+
+
+consider duplicates.
+Consider negatives.
+consider array index out of bound
+consider 0 -1 in inputs.
+
+STRING:
+
+KMP  -> LPS (longest proper prefix which is also suffix)
+edge cases: spaces side and between, not numeric, overflows in int, positives or negatives.
+
+
+Bit manipulation:
+XOR , numbers near to each other give lowest XOR
 
 
