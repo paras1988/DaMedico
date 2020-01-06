@@ -6,6 +6,16 @@ Backtracking:
   Explore
   Unchoose
 
+  Backtracking is an algorithm for finding all solutions by exploring all potential candidates.
+  If the solution candidate turns to be not a solution (or at least not the last one),
+  backtracking algorithm discards it by making some changes on the previous step,
+   i.e. backtracks and then try again.
+
+   Use all subsets code as reference whenever need to check for all possibilties and put condition , ques specific.e.g palindrome par.
+   visualize = NQueens
+   without putting any brain did permutation question. just get that pattern correct.
+
+
 Few Questions:
     Window sliding technique
 
@@ -72,14 +82,45 @@ consider duplicates.
 Consider negatives.
 consider array index out of bound
 consider 0 -1 in inputs.
+Overrides
+Return your answer modulo 10^9+7: do all ops in long then take mod with 10^9+7
 
 STRING:
 
 KMP  -> LPS (longest proper prefix which is also suffix)
-edge cases: spaces side and between, not numeric, overflows in int, positives or negatives.
+edge cases: spaces side and between, not numeric, overflows in int, positives or negatives, overlapping (like longest distinct subsequence)
 
 
 Bit manipulation:
 XOR , numbers near to each other give lowest XOR
 
+
+LinkeList:
+
+Always rt. question here are not tough but lot of edge cases.
+empty list. only 1 or 2 elements. about first and last element.
+
+
+Stack:
+Always check you are peeking into empty stack.
+Some problems solve via it are tough to guess. You need to see a pattern inside it.
+
+
+Hashing:
+Popular way to solve problems like 2 sum , 4 sum (also check 2 pointer approach).
+few problems like main string matched with pattern. use window
+
+
+Two pointer approach:
+Given a sorted array A (sorted in ascending order), having N integers, find if there exists
+any pair of elements (A[i], A[j]) such that their sum is equal to X.
+
+
+HEAP(PriorityQueue) and treemap:
+
+By default Min Heap is implemented by this class. To implement Max Heap, we use Collections.reverseOrder()
+PriorityQueue<Integer> pQueue =  new PriorityQueue<Integer>(Collections.reverseOrder());   //max heap .. max at top
+when problem needs to be stuck at min or max in every step then need to use this tech
+
+E.g Generic is Nmax_pair_combination or MagicianAndChoco.
 
