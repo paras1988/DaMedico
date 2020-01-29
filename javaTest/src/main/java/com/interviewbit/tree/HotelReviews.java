@@ -11,6 +11,13 @@ public class HotelReviews {
 
     public ArrayList<Integer> solve(String A, ArrayList<String> B) {
 
+
+        String[] str = A.split("_");
+
+        for(int i=0;i<str.length;i++){
+
+        }
+
         return null;
     }
 

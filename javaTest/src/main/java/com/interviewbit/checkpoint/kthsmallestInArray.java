@@ -49,7 +49,8 @@ public class kthsmallestInArray {
         return l;
     }
 }
-/*Find the kth smallest element in an unsorted array of non-negative integers.
+/*
+Find the kth smallest element in an unsorted array of non-negative integers.
 
 Definition of kth smallest element
 

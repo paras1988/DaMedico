@@ -8,7 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/flink" />
             <option value="$PROJECT_DIR$/groovyCode" />
+            <option value="$PROJECT_DIR$/hadoop" />
             <option value="$PROJECT_DIR$/javaTest" />
           </set>
         </option>

@@ -3,9 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DaMedico.iml" filepath="$PROJECT_DIR$/.idea/modules/DaMedico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flink.iml" filepath="$PROJECT_DIR$/.idea/modules/flink.iml" group="flink" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flink/flink_main.iml" filepath="$PROJECT_DIR$/.idea/modules/flink/flink_main.iml" group="flink" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flink/flink_test.iml" filepath="$PROJECT_DIR$/.idea/modules/flink/flink_test.iml" group="flink" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/groovyCode/groovyCode.iml" filepath="$PROJECT_DIR$/.idea/modules/groovyCode/groovyCode.iml" group="groovyCode" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/groovyCode/groovyCode_main.iml" filepath="$PROJECT_DIR$/.idea/modules/groovyCode/groovyCode_main.iml" group="groovyCode" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/groovyCode/groovyCode_test.iml" filepath="$PROJECT_DIR$/.idea/modules/groovyCode/groovyCode_test.iml" group="groovyCode" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hadoop/hadoop.iml" filepath="$PROJECT_DIR$/.idea/modules/hadoop/hadoop.iml" group="hadoop" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hadoop/hadoop_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hadoop/hadoop_main.iml" group="hadoop" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hadoop/hadoop_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hadoop/hadoop_test.iml" group="hadoop" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaTest/javaTest.iml" filepath="$PROJECT_DIR$/.idea/modules/javaTest/javaTest.iml" group="javaTest" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaTest/javaTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/javaTest/javaTest_main.iml" group="javaTest" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaTest/javaTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/javaTest/javaTest_test.iml" group="javaTest" />

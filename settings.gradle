@@ -1,3 +1,6 @@
 include 'javaTest'
 include 'groovyCode'
 rootProject.name = 'DaMedico'
+include 'flink'
+include 'hadoop'
+
