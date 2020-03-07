@@ -11,12 +11,12 @@ public class Print_ABC {
 
   public static void main(String[] args) {
     Print_ABC print_abc = new Print_ABC();
-    Thread A = new A(print_abc);
+  /*  Thread A = new A(print_abc);
     Thread B = new B(print_abc);
     Thread C = new C(print_abc);
     A.start();
     B.start();
-    C.start();
+    C.start();*/
   }
 
   void dfd(Print_ABC print_abc, int i, String str, int nextstate) {
@@ -33,7 +33,6 @@ public class Print_ABC {
         }
         catch (InterruptedException e) { }
       }
-    }
   }
 }
 
@@ -73,4 +72,5 @@ class C extends Thread{
   public void run() {
     print_abc.dfd(print_abc,3,"C", 1);
   }
+}
 }

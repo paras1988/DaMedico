@@ -20,9 +20,9 @@ class MyThread extends Thread{
   private Semaphore semaphore;
   private final Print_123123123_nThreads obj;
 
-  MyThread(Semaphore semaphore,int i,Print_123123123_nThreads print_123123123_nThreads){
+  MyThread(Semaphore semaphore,int threadName,Print_123123123_nThreads print_123123123_nThreads){
     this.semaphore = semaphore;
-    Thread.currentThread().setName(String.valueOf(i));
+    Thread.currentThread().setName(String.valueOf(threadName));
     this.obj = print_123123123_nThreads;
   }
 

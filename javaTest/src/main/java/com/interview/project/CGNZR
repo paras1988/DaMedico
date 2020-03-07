@@ -1,0 +1,125 @@
+ConfigVerticle -- All Config are there.
+                used gitconfig for all configurations.
+                gitconfig listens for updates and if updated send respected address specified in config file.
+
+                eventBus.consume()
+                eventBus.send()
+
+
+                AbstractVerticle
+                |
+                |
+                BaseMicroVerticle.     - initializes all serviceDiscovery, CircuitBreaker.
+                |
+                |
+                RestVerticle .. Wiki / Doc/ Wolf..
+                |
+                |
+                Gateway/Box/DLQna
+
+
+BrApiGateway - 1. Request for configurtion from configVerticle        eventbus.request
+               2. initializeAPIGateway (create clients and initialize chache)    vertx.executeBlocking
+
+               In result of blocking code we will registerRoutes..
+               Vertx Web:
+               general route handler - which route via SessionStore(auth = keycloack). request upload,              router.route().handler
+               and specific router for  all api calls..
+               e.g router.route("/box/*").handler(this::dispatchRequests);
+
+               and create .. vertx.createHttpServer().requestHandler and publish this api gateway in vertx serviceDiscovery ** will c the use.
+
+
+discovery.getRecords
+
+                in dispatchRequests. we use circuitBreaker.execute..  it also uses serviceDiscovery to load balance** and getting URL to hit.
+
+             // Simple Load Balancer  as using findAny().. which will find any subnet .
+             BrainAssistAPIGatewayVerticle . line 293
+
+            Also after execution it ServiceDiscovery.releaseServiceObjecT
+
+
+- Also publishes log on event bus
+- Few verticles create httpserver on different ports and publish it- Gateway, BoxCntrl, QnaMain
+- Each have different service discovery instance but all endpoints are shared to everyone. Service discovery is one per vertx.
+
+- Every verticle publishes itself in serviceDiscovery with there host and port.
+
+
+if verticles on different machine::
+
+Two seperate machines: Make sure Zookeeper is running on the machine(s) whose IP(s) are set to "zookeeperHosts" property then start each main
+class from a different machine (consumer then sender), in each main class set the cluster host to the IP address of the machine it is running on.
+The Zookeeper configuration should be the same on both machines. You should see the sent and received data.
+
+
+** Draw diagram for understanding.
+
+
+- Box, Wiki, Wolf - verticles are exposed by Vert.x Service Proxy -- It lets you expose a service on the event bus, so, any other Vert.x component
+can consume it.       Each serviceBinder has handler attached ProxyHandler Class. (QnAServiceVertxProxyHandler)
+Used this as all are using the same handler for response.             deliveryOptions.addHeader("action", "query");
+                                                                        Future.succeededFuture(result.result())
+                                                                        Handler<AsyncResult<List<ScoreItem>>>
+- Delievery options to specify timeout and header and codecs used on wire.
+
+
+
+- one dispatcher Service for all httpRequest to outer services.  to monitor time taken.
+
+
+
+
+Components:
+
+ServiceDispcovery  - ServiceBinder - ServiceDispatcher
+Simple loadbalancing via ServiceDiscovery.
+CircuitBreaker to call all
+
+
+
+metaCQLClient.putMeta(meta);
+
+
+
+
+
+
+
+The four Reactive principles
+
+responsive - quick to react to all users
+resilient-  ensure responsiveness under grey skies as well as blue.
+Scalable- system is easily upgraded on demand in order to ensure responsiveness under various load conditions.
+message-driven architecture is the foundation of scalable, resilient, and ultimately responsive systems.
+
+----------
+CompositeFuture all vs join
+vertx.executeBlocking - worker pool
+
+Verticle Types-
+Standard Verticles:: These are the most common and useful type - they are always executed using an event loop thread. We’ll discuss this more in the next section.
+Worker Verticles:: These run using a thread from the worker pool. An instance is never executed concurrently by more than one thread.
+Multi-threaded worker verticles:: These run using a thread from the worker pool. An instance can be executed concurrently by more than one thread.
+--------
+Specifying number of verticle instances:
+deploy multiple instances to utilise all the cores.
+----------
+The event bus supports publish/subscribe, point-to-point, and request-response messaging.
+
+Sending with timeouts;; he default timeout is 30 seconds.
+----------
+Other Learnings:
+
+ConcurrentHashMap<String, SentencePOS> parseCache;
+Worker thread spawned in between.
+
+
+
+
+
+
+
+
+
